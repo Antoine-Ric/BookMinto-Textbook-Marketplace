@@ -1,2 +1,2 @@
-# bookMint
+# bookMinto
 Textbook Marketplace
