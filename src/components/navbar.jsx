@@ -21,16 +21,19 @@ function Navbar() {
       </a>
       <ul className={active}>
         <li className="nav__item">
-          <a href="#" className="nav__link">
-            Home
+          <a href="SignIn" className="nav__link">
+            Sign In
           </a>
         </li>
         <li className="nav__item">
-          <a href="#" className="nav__link">
-            About
-          </a>
+          /
         </li>
         <li className="nav__item">
+          <a href="SignUp" className="nav__link">
+            Sign Up
+          </a>
+        </li>
+        {/* <li className="nav__item">
           <a href="#" className="nav__link">
             Portfolio
           </a>
@@ -44,7 +47,7 @@ function Navbar() {
           <a href="#" className="nav__link">
             Contact
           </a>
-        </li>
+        </li> */}
       </ul>
       <div onClick={navToggle} className={icon}>
         <div className="line1"></div>
