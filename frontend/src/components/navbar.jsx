@@ -15,10 +15,14 @@ function Navbar() {
     } else setIcon("nav__toggler");
   };
   return (
+
+   
+
     <nav className="nav">
       <a href="#" className="nav__brand">
-        BOOKMINT
+      <img src="photo-output.jpg" alt="nav_brandlogo"/>
       </a>
+      
       <ul className={active}>
         <li className="nav__item">
           <a href="SignIn" className="nav__link">
