@@ -1,17 +1,24 @@
 import React from "react";
 import "../styles/SignUp.css"; // Make sure to link the CSS file correctly
-// import { countries } from "countries-list";
+import { countries } from "countries-list";
 
 export default function SignUp() {
+
+  // An array of countries from the 'countries-list' package
+  const countryOptions = Object.keys(countries).map(code => ({
+    name: countries[code].name,
+    code: code
+  }));
+
   return (
     <div className="signup-page">
       <div className="signup-images">
-        {/* Here you can add img tags or set background images using CSS */}
+        
       </div>
       <div className="signup-form-container">
         <div className="signup-form-header">
           <h1>Sign up</h1>
-          <p>Step 1 of 3</p>
+          {/* <p>Step 1 of 3</p> */}
         </div>
         <form className="signup-form">
           <div className="form-group">
@@ -28,27 +35,26 @@ export default function SignUp() {
 
           <div className="password_requirements">
             <ul>
-              <li>Must be at least 8 characters</li>
-              <li>Must include a number and special character</li>
+              <li>X Must be at least 8 characters</li>
+              <li>X Must include a number and special character</li>
             </ul>
           </div>
-{/* 
-          <select name="country" id="country">
-            {countries.map((country, index) => (
+
+          <select name="country" id="country" className="form-field">
+            {countryOptions.map((country, index) => (
               <option key={index} value={country.code}>
                 {country.name}
               </option>
             ))}
-          </select> */}
-
+          </select>
 
           <button type="submit">Next</button>
         </form>
-        <p>
+        <p className="policy_footer">
           By clicking Next you agree to our
-          <a href="/terms">Terms of Service</a>
+          <a href="/terms"> Terms of Service </a>
           and
-          <a href="/privacy">Privacy Policy</a>.
+          <a href="/privacy"> Privacy Policy</a>.
         </p>
       </div>
     </div>
