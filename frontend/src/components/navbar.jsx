@@ -15,43 +15,23 @@ function Navbar() {
     } else setIcon("nav__toggler");
   };
   return (
-
-   
-
     <nav className="nav">
       <a href="#" className="nav__brand">
-      <img src="photo-output.jpg" alt="nav_brandlogo"/>
+        <img src="photo-output.jpg" alt="nav_brandlogo" />
       </a>
-      
+
       <ul className={active}>
         <li className="nav__item">
           <a href="SignIn" className="nav__link">
             Sign In
           </a>
         </li>
-        <li className="nav__item">
-          /
-        </li>
+        <li className="nav__item">/</li>
         <li className="nav__item">
           <a href="SignUp" className="nav__link">
             Sign Up
           </a>
         </li>
-        {/* <li className="nav__item">
-          <a href="#" className="nav__link">
-            Portfolio
-          </a>
-        </li>
-        <li className="nav__item">
-          <a href="#" className="nav__link">
-            Skills
-          </a>
-        </li>
-        <li className="nav__item">
-          <a href="#" className="nav__link">
-            Contact
-          </a>
-        </li> */}
       </ul>
       <div onClick={navToggle} className={icon}>
         <div className="line1"></div>
