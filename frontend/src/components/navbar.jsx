@@ -17,7 +17,7 @@ function Navbar() {
   };
   return (
     <nav className="nav">
-      <a href="#" className="nav__brand">
+      <a href="/" className="nav__brand">
         {/* <img src="photo-output.jpg" alt="nav_brandlogo" /> */}
         <img src={logoImage} alt="nav_brandlogo" />
       </a>
