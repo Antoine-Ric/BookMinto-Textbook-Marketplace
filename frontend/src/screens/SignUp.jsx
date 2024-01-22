@@ -3,18 +3,15 @@ import "../styles/SignUp.css"; // Make sure to link the CSS file correctly
 import { countries } from "countries-list";
 
 export default function SignUp() {
-
   // An array of countries from the 'countries-list' package
-  const countryOptions = Object.keys(countries).map(code => ({
+  const countryOptions = Object.keys(countries).map((code) => ({
     name: countries[code].name,
-    code: code
+    code: code,
   }));
 
   return (
     <div className="signup-page">
-      <div className="signup-images">
-        
-      </div>
+      <div className="signup-images"></div>
       <div className="signup-form-container">
         <div className="signup-form-header">
           <h1>Sign up</h1>
