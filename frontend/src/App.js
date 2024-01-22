@@ -1,19 +1,3 @@
-// import HomePage from './screens/HomePage'
-// import React from "react";
-
-// function App() {
-//     return (
-//         <div>
-//             <HomePage />
-
-
-//         </div>
-//     );
-// }
-
-// export default App
-
-
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/navbar";

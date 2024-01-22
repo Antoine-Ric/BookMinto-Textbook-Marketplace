@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../navbar.css";
+import "../styles/navbar.css";
 import logoImage from "../assets/photo-output.jpg";
 
 function Navbar() {
@@ -18,7 +18,6 @@ function Navbar() {
   return (
     <nav className="nav">
       <a href="/" className="nav__brand">
-        {/* <img src="photo-output.jpg" alt="nav_brandlogo" /> */}
         <img src={logoImage} alt="nav_brandlogo" />
       </a>
 

@@ -45,7 +45,7 @@ export default function SignUp() {
             ))}
           </select>
 
-          <button type="submit">Next</button>
+          <button type="submit">Sign Up</button>
         </form>
         <p className="policy_footer">
           By clicking Next you agree to our
