@@ -1,0 +1,1 @@
+//search bar under the navbar on the homescreen
