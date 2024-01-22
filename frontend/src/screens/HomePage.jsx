@@ -1,22 +1,8 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "../components/navbar";
-import SignIn from "../screens/SignIn";
-import SignUp from "../screens/SignUp";
+// HomePage.jsx
+import React from "react";
 
 const HomePage = () => {
-  return (
-    <>
-      <Navbar />
-
-      <BrowserRouter>
-        <Routes>
-
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
-        </Routes>
-      </BrowserRouter>
-    </>
-  );
+  return <div> </div>;
 };
 
 export default HomePage;
