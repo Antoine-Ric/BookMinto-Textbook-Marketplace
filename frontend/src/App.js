@@ -5,7 +5,13 @@ import Home from "./screens/HomePage"; // Assuming you have a Home component
 import SignIn from "./screens/SignIn";
 import SignUp from "./screens/SignUp";
 
+import { useState } from "react";
+import "./styles/SearchBar.css";
+import { SearchBar } from "./components/SearchBar";
+import { SearchResults } from "./components/SearchResults";
+
 function App() {
+  const [results, setResults] = useState([])
   return (
     <Router>
       <Routes>
@@ -14,6 +20,10 @@ function App() {
           element={
             <>
               <Navbar />
+                <div className="Search-bar-container">
+                  <SearchBar setResults={setResults}/>
+                  <SearchResults results={results}/>
+                </div>
               <Home />
             </>
           }
