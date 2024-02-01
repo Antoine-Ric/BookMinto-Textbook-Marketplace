@@ -1,127 +1,91 @@
-import { useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import {
-  Form,
-  Row,
-  Col,
-  Image,
-  ListGroup,
-  Card,
-  Button,
-} from "react-bootstrap";
-import { useDispatch } from "react-redux";
+/* ProductScreen.jsx*/
 
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Row, Col, Image, ListGroup } from "react-bootstrap";
+import "../styles/ProductScreen.css";
+
+// Placeholder component for Loader
+const Loader = () => <div>Loading...</div>;
+
+// Placeholder component for Message
+const Message = ({ variant, children }) => (
+  <div className={`alert alert-${variant}`}>{children}</div>
+);
+
+// Placeholder component for Rating
+const Rating = ({ value, text }) => (
+  <div>
+    Rating: {value} ({text})
+  </div>
+);
 
 const ProductScreen = () => {
-  const { id: productId } = useParams();
+  const [product, setProduct] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  useEffect(() => {
+    // Simulate fetching product details
+    setIsLoading(true);
+    // This is where you would fetch product data from your backend or API
+    // For demonstration, we're using a static product object
+    const fetchProduct = async () => {
+      try {
+        // Simulated fetch delay
+        setTimeout(() => {
+          const productData = {
+            name: "Sample Product",
+            image: "/path/to/sample-image.jpg",
+            description: "This is a sample product description.",
+            price: "99.99",
+            rating: 4.5,
+            numReviews: 12,
+          };
+          setProduct(productData);
+          setIsLoading(false);
+        }, 1000);
+      } catch (error) {
+        setError("Failed to fetch product");
+        setIsLoading(false);
+      }
+    };
 
-  const [qty, setQty] = useState(1);
-
-  const {
-    data: product,
-    isLoading,
-    error,
-  } = useGetProductDetailsQuery(productId);
-
-  const addToCartHandler = () => {
-    dispatch(addToCart({ ...product, qty }));
-    navigate("/cart");
-  };
+    fetchProduct();
+  }, []);
 
   return (
     <>
-      <Link className="btn btn-light my-3" to="/">
-        Go Back
-      </Link>
-
+      <Link to="/">Go Back</Link>
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <Message variant="danger">
-          {error?.data?.message || error.error}
-        </Message>
+        <Message variant="danger">{error}</Message>
       ) : (
-        <Row>
-          <Col md={6}>
-            <Image src={product.image} alt={product.name} fluid />
-          </Col>
-
-          <Col md={3}>
-            <ListGroup variant="flush">
-              <ListGroup.Item>
-                <h3>{product.name}</h3>
-              </ListGroup.Item>
-              <ListGroup.Item>
-                <Rating
-                  value={product.rating}
-                  text={`${product.numReviews} reviews`}
-                />
-              </ListGroup.Item>
-              <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
-              <ListGroup.Item>
-                Description: {product.description}{" "}
-                {/* Removed the $ sign before description */}
-              </ListGroup.Item>
-            </ListGroup>
-          </Col>
-
-          <Col md={3}>
-            <Card>
+        product && (
+          <Row>
+            <Col md={6}>
+              <Image src={product.image} alt={product.name} fluid />
+            </Col>
+            <Col md={3}>
               <ListGroup variant="flush">
                 <ListGroup.Item>
-                  <Row>
-                    <Col>Price:</Col>
-                    <Col>
-                      <strong>${product.price}</strong>
-                    </Col>
-                  </Row>
+                  <h3>{product.name}</h3>
                 </ListGroup.Item>
                 <ListGroup.Item>
-                  <Row>
-                    <Col>Status:</Col>
-                    <Col>
-                      {product.countInStock > 0 ? "In Stock" : "Out of Stock"}
-                    </Col>
-                  </Row>
+                  <Rating
+                    value={product.rating}
+                    text={`${product.numReviews} reviews`}
+                  />
                 </ListGroup.Item>
-
-                {product.countInStock > 0 && (
-                  <ListGroup.Item>
-                    <Row>
-                      <Col>Qty</Col>
-                      <Col>
-                        <Form.Control
-                          as="select"
-                          value={qty}
-                          onChange={(e) => setQty(Number(e.target.value))}
-                        >
-                          {[...Array(product.countInStock).keys()].map((x) => (
-                            <option key={x + 1} value={x + 1}>
-                              {x + 1}
-                            </option>
-                          ))}
-                        </Form.Control>
-                      </Col>
-                    </Row>
-                  </ListGroup.Item>
-                )}
+                <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
                 <ListGroup.Item>
-                  <Button
-                    className="btn-block"
-                    type="button"
-                    disabled={product.countInStock === 0}
-                    onClick={addToCartHandler}
-                  >
-                    Add to Cart
-                  </Button>
+                  Description: {product.description}
                 </ListGroup.Item>
               </ListGroup>
-            </Card>
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        )
       )}
     </>
   );
