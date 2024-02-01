@@ -33,6 +33,28 @@ npm install
 npm install react-icons --save
 
 
+# This is how you cna rebase if there are changes to main
+
+```markdown
+```bash
+# First, make sure you're on your main branch and it's up to date
+git checkout main
+git pull origin main
+
+# Then, switch to the branch you want to rebase
+git checkout your-branch-name
+
+# Rebase the changes from main onto your branch
+git rebase main
+
+# If there are any conflicts, resolve them and then continue the rebase
+git rebase --continue
+
+# Once the rebase is complete, force push to the remote repository
+# Note: Use force push with caution, as it can overwrite history!
+git push origin your-branch-name --force
+
+
 
 
 
