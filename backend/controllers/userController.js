@@ -33,14 +33,14 @@ const getUserProfile = asyncHandler(async (req, res) => {
 // @route   PUT /api/users/profile
 // @access  Private
 const updateUserProfile = asyncHandler(async (req, res) => {
-    res.send('update user')
+    res.send('update user profile')
 })
 
 // @desc    get users
 // @route   GET /api/users
 // @access  Private/ADMIN
 const getUsers = asyncHandler(async (req, res) => {
-    res.send('get user')
+    res.send('get users')
 })
 
 // @desc    get user by ID
