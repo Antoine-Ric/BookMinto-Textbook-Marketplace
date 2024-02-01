@@ -22,12 +22,12 @@ function Navbar() {
       </a>
 
       <ul className={active}>
-      <li className="nav__item">
-        <a href="Products" className="nav__link">
-          Products
-        </a>
-      </li>  
-      <li className ="nav__item">/</li>                
+        <li className="nav__item">
+          <a href="productscreen" className="nav__link">
+            Products
+          </a>
+        </li>
+        <li className="nav__item">/</li>
         <li className="nav__item">
           <a href="SignIn" className="nav__link">
             Sign In
