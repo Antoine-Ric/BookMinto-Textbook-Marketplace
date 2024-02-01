@@ -4,6 +4,7 @@ import Navbar from "./components/navbar";
 import Home from "./screens/HomePage"; // Assuming you have a Home component
 import SignIn from "./screens/SignIn";
 import SignUp from "./screens/SignUp";
+import ProductScreen from "./screens/ProductScreen";
 
 import { useState } from "react";
 import "./styles/SearchBar.css";
@@ -31,6 +32,7 @@ function App() {
 
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/productscreen" element={<ProductScreen />} />
         {/* Add more routes as needed */}
       </Routes>
     </Router>
