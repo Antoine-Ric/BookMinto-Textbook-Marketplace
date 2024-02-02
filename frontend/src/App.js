@@ -1,6 +1,8 @@
 import { Container } from "react-bootstrap";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import HomeScreen from "./screens/HomeScreen";
+
 
 import { useState } from "react";
 import "./styles/SearchBar.css";
@@ -15,13 +17,13 @@ const App = () => {
       <Header />
       <main className="py-3">
         <Container>
-          <h1> Welcome to BookMinto</h1>
+          <HomeScreen />
         </Container>
 
-        <div className="Search-bar-container">
+        {/* <div className="Search-bar-container">
           <SearchBar setResults={setResults} />
           <SearchResults results={results} />
-        </div>
+        </div> */}
       </main>
       <Footer />
     </>
