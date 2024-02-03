@@ -1,0 +1,28 @@
+{
+  "name": "bookminto",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "bootstrap": "^5.3.2",
+    "cookie-parser": "^1.4.6",
+    "create-react-app": "^5.0.1",
+    "dotenv": "^16.4.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.1.1",
+    "react-bootstrap": "^2.10.0",
+    "react-icons": "^5.0.1",
+    "react-redux": "^9.1.0",
+    "react-scripts": "^5.0.1"
+  }
+}
