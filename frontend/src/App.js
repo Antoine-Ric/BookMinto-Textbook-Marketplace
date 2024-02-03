@@ -4,14 +4,13 @@ import Footer from "./components/Footer";
 import { Outlet } from 'react-router-dom';
 
 
-import { useState } from "react";
+
 import "./styles/SearchBar.css";
-import { SearchBar } from "./components/SearchBar";
-import { SearchResults } from "./components/SearchResults";
+
 
 
 const App = () => {
-  const [results, setResults] = useState([])
+
   return (
     <>
       <Header />

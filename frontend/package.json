@@ -2,7 +2,11 @@
   "name": "bookmint",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:5001",
+  "options": {
+  "allowedHosts": ["localhost", ".localhost"],
+"proxy": "https://localhost:5001/"
+},
+
   "dependencies": {
     "@reduxjs/toolkit": "^2.1.0",
     "@testing-library/jest-dom": "^5.17.0",
