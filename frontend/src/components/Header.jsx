@@ -17,11 +17,11 @@ const Header = () => {
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mx-auto">
+            {/* <Nav className="mx-auto">
               <LinkContainer to="/products">
                 <Nav.Link className="products-link">Products</Nav.Link> 
               </LinkContainer>
-            </Nav>
+            </Nav> */}
             <Nav className="ms-auto">
               {/* <Nav.Link href="/cart"><FaShoppingCart/> Cart</Nav.Link> */}
               <LinkContainer to="/login">
