@@ -1,7 +1,8 @@
 import { Navbar, Nav, Container} from 'react-bootstrap';
 import { FaUser } from 'react-icons/fa';
 import { LinkContainer } from 'react-router-bootstrap';
-import logo from "../assets/logo.png"; // Angela change the logo to have just the leaf
+import logo from "../assets/mintlogosmall.png"; // Angela change the logo to have just the leaf
+import "../assets/styles/bootstrap.custom.css";
 
 const Header = () => {
   return (
@@ -16,6 +17,11 @@ const Header = () => {
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="mx-auto">
+              <LinkContainer to="/products">
+                <Nav.Link className="products-link">Products</Nav.Link> 
+              </LinkContainer>
+            </Nav>
             <Nav className="ms-auto">
               {/* <Nav.Link href="/cart"><FaShoppingCart/> Cart</Nav.Link> */}
               <LinkContainer to="/login">
@@ -31,4 +37,4 @@ const Header = () => {
   );
 }
 
-export default Header
+export default Header;

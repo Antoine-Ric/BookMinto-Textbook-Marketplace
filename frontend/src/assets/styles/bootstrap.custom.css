@@ -189,6 +189,8 @@
   box-sizing: border-box;
 }
 
+
+
 @media (prefers-reduced-motion: no-preference) {
   :root {
     scroll-behavior: smooth;
@@ -4140,6 +4142,75 @@ fieldset:disabled .btn {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
+}
+
+.navbar-brand{
+  color:#fff;
+  font-weight:500;
+  font-size: 24px;
+  ;
+}
+
+.navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus{
+  color: #93BF27;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+  background-color: #7AAA20;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  transition:0.3s background-color;
+}
+
+.navbar-dark .navbar-nav .nav-link[href="/login"]:hover{
+  background-color: #74a51f;
+}
+
+.navbar-toggler{
+  border: none;
+  font-size: 1.25rem;
+}
+
+.navbar-toggler:focus, .btn-close:focus{
+  box-shadow: none;
+  outline: none;
+}
+
+@media (max-width: 991px) {
+  .navbar-toggler + .collapse .navbar-nav .products-link{
+    margin-bottom: 10px;
+  }
+}
+
+
+.navbar-dark .navbar-nav .products-link {
+  background-color:transparent;
+  color:#fff;
+  font-weight: 500;
+  font-size: 18px;
+  position: relative;
+}
+
+.navbar-dark .navbar-nav .products-link::before{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background-color: #7AAA20;
+  visibility: hidden;
+  transition: 0.3s ease-in-out;
+}
+
+.navbar-dark .navbar-nav .products-link:hover::before, .navbar-dark .navbar-nav .products-link.active::before {
+  width: 100%;
+  visibility: visible;
 }
 
 .navbar-nav-scroll {
