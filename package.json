@@ -1,0 +1,16 @@
+{
+  "name": "bookminto",
+  "version": "2.0.0",
+  "description": "eCommerce textbook application built with MERN Stack",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "author": "Jasmine Masopeh",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2"
+  }
+}
