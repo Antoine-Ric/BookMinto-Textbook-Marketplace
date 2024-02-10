@@ -1,25 +1,21 @@
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-// import { Link } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
 import Rating from "../components/Rating";
-// import products from "../products";
 import axios from "axios";
 
 const ProductScreen = () => {
-  const [product, setProduct] = useState([]);
+  const [product, setProduct] = useState({});
 
   const { id: productId } = useParams();
-  // const product = products.find((p) => p._id === productId);
 
   useEffect(() => {
     const fetchProduct = async () => {
       const { data } = await axios.get(`/api/products/${productId}`);
       setProduct(data);
-    }
-
-    fetchProduct();
-  }, [productId]);
+    };
+    fetchProduct(); // Call fetchProduct to perform the action
+  }, [productId]); // Include productId in the dependency array to re-run the effect when it changes
 
   return (
     <>
@@ -27,11 +23,11 @@ const ProductScreen = () => {
         Go Back
       </Link>
       <Row>
-        <Col md={5}>
+        <Col md={6}>
           <Image src={product.image} alt={product.name} fluid />
         </Col>
 
-        <Col md={4}>
+        <Col md={3}>
           <ListGroup variant="flush">
             <ListGroup.Item>
               <h3>{product.name}</h3>
@@ -43,7 +39,10 @@ const ProductScreen = () => {
               />
             </ListGroup.Item>
             <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
-            <ListGroup.Item>Description: ${product.description}</ListGroup.Item>
+            <ListGroup.Item>
+              Description: {product.description}{" "}
+              {/* Removed the $ sign before description */}
+            </ListGroup.Item>
           </ListGroup>
         </Col>
 
