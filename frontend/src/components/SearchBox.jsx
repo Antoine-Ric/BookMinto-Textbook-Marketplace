@@ -1,42 +1,35 @@
 import React from 'react'
 import { useState } from 'react'
-import { Form, Button } from 'react-bootstrap'
+import { Form} from 'react-bootstrap'
 import { useParams, useNavigate } from 'react-router-dom'
-
-    /*
-        later on change so there is no need for a search button
-        it will change automatically when a change is made inside
-        of the search bar itself
-    */
 
 const SearchBox = () => {
     const navigate = useNavigate()
     const {keyword: urlKeyword} = useParams()
     const [keyword, setKeyword] = useState(urlKeyword || '')
 
-    const submitHandler = (e) => {
-        e.preventDefault()
-        if (keyword.trim()){
-            navigate(`/search/${keyword}`)
+    const handleChange = (e) => {
+        const value = e.target.value;
+        setKeyword(value);
+        if (value.trim() === '') {
+            navigate('/');
+        } else {
+            navigate(`/search/${value}`);
         }
-        else {
-            navigate('/')
-        }
-    }
-  
+    };
+
     return (
-    <Form onSubmit={submitHandler} className=''>
-        <Form.Control
-            type='text'
-            name='q'
-            onChange={(e) => setKeyword(e.target.value)}
-            value={keyword}
-            placeholder='Search By Name or ISBN...'
-            className=''
-        ></Form.Control>
-        <Button type='submit' variant='outline-success' className=''> Search </Button>
-    </Form>
-  )
-}
+        <Form className="">
+            <Form.Control
+                type="text"
+                name="q"
+                onChange={handleChange}
+                value={keyword}
+                placeholder="Search By Name or ISBN..."
+                className=""
+            ></Form.Control>
+        </Form>
+    );
+};
 
 export default SearchBox
