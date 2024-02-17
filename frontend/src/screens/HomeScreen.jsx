@@ -4,7 +4,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { useGetProductsQuery } from "../slices/productsApiSlice";
 import { useParams } from "react-router-dom";
-
+import SearchBox from "../components/SearchBox";
 // import products from '../products';
 
 const HomeScreen = () => {
@@ -21,6 +21,7 @@ const HomeScreen = () => {
         </Message>
       ) : (
         <>
+          <SearchBox />
           <h1>Latest Products</h1>
           <Row>
             {products.map((product) => (
