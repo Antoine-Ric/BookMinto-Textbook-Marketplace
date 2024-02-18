@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     Row,
@@ -14,7 +14,7 @@ import Message from '../components/Message';
 import {addToCart, removeFromCart} from '../slices/favoriteSlice';
 
 const FavoriteScreen = () => {
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
     const dispatch = useDispatch();
   
     const cart = useSelector((state) => state.cart);
@@ -28,9 +28,9 @@ const FavoriteScreen = () => {
         dispatch(removeFromCart(id));
       };
 
-      const checkoutHandler = () => {
-        navigate('/login?redirect=/shipping');
-      };
+      // const checkoutHandler = () => {
+      //   navigate('/login?redirect=/shipping');
+      // };
 
     return (
         <Row>
@@ -95,7 +95,7 @@ const FavoriteScreen = () => {
                     .reduce((acc, item) => acc + item.qty * item.price, 0)
                     .toFixed(2)}
                 </ListGroup.Item>
-                <ListGroup.Item>
+                {/* <ListGroup.Item>
                   <Button
                     type='button'
                     className='btn-block'
@@ -104,7 +104,7 @@ const FavoriteScreen = () => {
                   >
                     Proceed To Checkout
                   </Button>
-                </ListGroup.Item>
+                </ListGroup.Item> */}
               </ListGroup>
             </Card>
           </Col>

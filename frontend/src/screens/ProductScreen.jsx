@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate} from "react-router-dom";
 import {
   Form,
   Row,
@@ -9,12 +9,14 @@ import {
   Card,
   Button,
 } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
 import Rating from "../components/Rating";
 import Message from "../components/Message";
 import { useGetProductDetailsQuery } from "../slices/productsApiSlice";
 import { addToCart } from "../slices/favoriteSlice";
+//import { FaTrash } from "react-icons/fa";
+
 const ProductScreen = () => {
   const { id: productId } = useParams();
 
@@ -22,6 +24,15 @@ const ProductScreen = () => {
   const navigate = useNavigate();
 
   const [qty, setQty] = useState(1);
+
+  const { cartItems } = useSelector((state) => state.cart);
+
+  const checkoutHandler = () => {
+    console.log('Proceeding to checkout...');
+    navigate('/login?redirect=/shipping');
+  };
+  
+
 
   const {
     data: product,
@@ -119,6 +130,16 @@ const ProductScreen = () => {
                     onClick={addToCartHandler}
                   >
                     Add to Favorites
+                  </Button>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <Button
+                    className="btn-block"
+                    type="button"
+                    disabled={cartItems.length === 0}
+                    onClick={checkoutHandler}
+                  >
+                    Proceed To Checkout
                   </Button>
                 </ListGroup.Item>
               </ListGroup>
