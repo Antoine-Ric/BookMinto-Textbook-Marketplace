@@ -12,11 +12,13 @@ import "./assets/styles/index.css";
 import "./assets/styles/bootstrap.custom.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import PrivateRoute from './components/PrivateRoute';
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
-import CartScreen from "./screens/FavoriteScreen";
+import FavoriteScreen from "./screens/FavoriteScreen";
+import ShippingScreen from './screens/ShippingScreen';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,10 +26,16 @@ const router = createBrowserRouter(
       <Route index={true} path="/" element={<HomeScreen />} />
       <Route path="/search/:keyword" element={<HomeScreen />} />
       <Route path="/product/:id" element={<ProductScreen />} />
-      <Route path="/favorites" element={<CartScreen />} />
+      <Route path="/favorites" element={<FavoriteScreen />} />
       <Route path="/login" element={<LoginScreen />} />
       <Route path="/register" element={<RegisterScreen />} />
+
+      <Route path='' element={<PrivateRoute />}>
+      <Route path='/shipping' element={<ShippingScreen />} />
     </Route>
+
+    </Route>
+    
   )
 );
 
