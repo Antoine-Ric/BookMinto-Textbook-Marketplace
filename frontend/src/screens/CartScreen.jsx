@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Row,
@@ -7,14 +7,13 @@ import {
   Image,
   Form,
   Button,
-  Card,
 } from "react-bootstrap";
 import { FaTrash } from "react-icons/fa";
 import Message from "../components/Message";
 import { addToCart, removeFromCart } from "../slices/cartSlice";
 
 const CartScreen = () => {
-  const navigate = useNavigate();
+
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
@@ -28,12 +27,11 @@ const CartScreen = () => {
     dispatch(removeFromCart(id));
   };
 
-  const checkoutHandler = () => {
-    navigate("/login?redirect=/shipping");
-  };
+ 
+    
   return (
     <Row>
-      <Col md={8}>
+      <Col md={10}>
         <h1 style={{ marginBottom: "20px" }}>Favorites List</h1>
         {cartItems.length === 0 ? (
           <Message>
