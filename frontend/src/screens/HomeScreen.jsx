@@ -3,11 +3,13 @@ import Product from "../components/Product";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import { useGetProductsQuery } from "../slices/productsApiSlice";
-
+import { useParams } from "react-router-dom";
+import SearchBox from "../components/SearchBox";
 // import products from '../products';
 
 const HomeScreen = () => {
-  const { data: products, isLoading, error } = useGetProductsQuery();
+  const {keyword} = useParams()
+  const { data: products, isLoading, error } = useGetProductsQuery({keyword});
 
   return (
     <>
@@ -19,6 +21,7 @@ const HomeScreen = () => {
         </Message>
       ) : (
         <>
+          <SearchBox />
           <h1>Latest Products</h1>
           <Row>
             {products.map((product) => (
