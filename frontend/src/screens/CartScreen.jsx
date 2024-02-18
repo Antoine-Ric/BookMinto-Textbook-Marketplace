@@ -34,10 +34,10 @@ const CartScreen = () => {
   return (
     <Row>
       <Col md={8}>
-        <h1 style={{ marginBottom: "20px" }}>Shopping Cart</h1>
+        <h1 style={{ marginBottom: "20px" }}>Favorites List</h1>
         {cartItems.length === 0 ? (
           <Message>
-            Your cart is empty <Link to="/">Go Back</Link>
+            Your favorites list is empty <Link to="/">Go Back</Link>
           </Message>
         ) : (
           <ListGroup variant="flush">
@@ -82,7 +82,7 @@ const CartScreen = () => {
         )}
       </Col>
       <Col md={4}>
-        <Card>
+        {/* <Card>
           <ListGroup variant="flush">
             <ListGroup.Item>
               <h2>
@@ -105,7 +105,7 @@ const CartScreen = () => {
               </Button>
             </ListGroup.Item>
           </ListGroup>
-        </Card>
+        </Card> */}
       </Col>
     </Row>
   );
