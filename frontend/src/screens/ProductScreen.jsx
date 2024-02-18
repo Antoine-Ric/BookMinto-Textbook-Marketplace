@@ -118,7 +118,7 @@ const ProductScreen = () => {
                     disabled={product.countInStock === 0}
                     onClick={addToCartHandler}
                   >
-                    Add to Cart
+                    Add to Favorites
                   </Button>
                 </ListGroup.Item>
               </ListGroup>
