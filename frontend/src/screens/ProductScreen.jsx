@@ -14,7 +14,7 @@ import Loader from "../components/Loader";
 import Rating from "../components/Rating";
 import Message from "../components/Message";
 import { useGetProductDetailsQuery } from "../slices/productsApiSlice";
-import { addToCart } from "../slices/cartSlice";
+import { addToCart } from "../slices/favoriteSlice";
 const ProductScreen = () => {
   const { id: productId } = useParams();
 
