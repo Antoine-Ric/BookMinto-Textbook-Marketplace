@@ -16,7 +16,7 @@ import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
 import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
-import CartScreen from "./screens/CartScreen";
+import CartScreen from "./screens/FavoriteScreen";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
