@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Row, Col, ListGroup, Image, Form, Button } from "react-bootstrap";
+import { Row, Col, ListGroup, Image, Button } from "react-bootstrap";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-import { FaTrash } from "react-icons/fa";
 import Message from "../components/Message";
-import { addToCart, removeFromCart } from "../slices/favoriteSlice";
+import { removeFromCart } from "../slices/favoriteSlice";
 
-const FavoriteScreen = () => {
-  //const navigate = useNavigate();
+const FavoriteScreen = ({ product }) => {
   const dispatch = useDispatch();
+  const [qty] = useState(1);
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
@@ -17,17 +16,20 @@ const FavoriteScreen = () => {
   // State to track items removed from favorites before page reload
   const [removedFavorites, setRemovedFavorites] = useState({});
 
-  const addToCartHandler = async (product, qty) => {
-    dispatch(addToCart({ ...product, qty }));
-  };
-
   const removeFromCartHandler = (id) => {
-    // Mark the item as removed in local state and localStorage
-    setRemovedFavorites((prev) => {
-      const updated = { ...prev, [id]: true };
-      localStorage.setItem("removedFavorites", JSON.stringify(updated));
-      return updated;
-    });
+    /* This code is for if Raul really wants to use Grailed Website However, its not recommended to do it like that. And the badge will not be updated until user reloads.*/
+    // dispatch(removeFromCart({ ...product, qty }));
+    // // Mark the item as removed in local state and localStorage
+    // setRemovedFavorites((prev) => {
+    //   const updated = { ...prev, [id]: true };
+    //   localStorage.setItem("removedFavorites", JSON.stringify(updated));
+    //   return updated;
+    // });
+
+    dispatch(removeFromCart(id));
+    setRemovedFavorites((prev) => ({ ...prev, [id]: true }));
+
+    localStorage.setItem("removedFavorites", JSON.stringify({ ...removedFavorites, [id]: true }));
   };
 
   useEffect(() => {
@@ -62,33 +64,17 @@ const FavoriteScreen = () => {
                   <Col md={5}>
                     <Link to={`/product/${item._id}`}>{item.name}</Link>
                   </Col>
-                  {/* <Col md={2}>${item.price}</Col> */}
-                  {/* <Col md={2}>
-                        <Form.Control
-                          as='select'
-                          value={item.qty}
-                          onChange={(e) =>
-                            addToCartHandler(item, Number(e.target.value))
-                          }
-                        >
-                          {[...Array(item.countInStock).keys()].map((x) => (
-                            <option key={x + 1} value={x + 1}>
-                              {x + 1}
-                            </option>
-                          ))}
-                        </Form.Control>
-                      </Col> */}
+
                   <Col md={3}>
                     <Button
                       type="button"
                       variant="light"
                       onClick={() => removeFromCartHandler(item._id)}
                     >
-                      {/* Show outlined heart if item is marked as removed, filled otherwise */}
                       {removedFavorites[item._id] ? (
-                        <FaRegHeart />
+                        <FaRegHeart color="gray" />
                       ) : (
-                        <FaHeart />
+                        <FaHeart color="gray" />
                       )}
                     </Button>
                   </Col>
