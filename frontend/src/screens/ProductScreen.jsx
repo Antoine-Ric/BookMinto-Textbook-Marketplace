@@ -8,6 +8,7 @@ import {
   ListGroup,
   Card,
   Button,
+  Modal,
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "../components/Loader";
@@ -43,6 +44,15 @@ const ProductScreen = () => {
   const addToCartHandler = () => {
     dispatch(addToCart({ ...product, qty }));
     navigate("/favorites");
+  };
+
+  const [showOfferModal, setShowOfferModal] = useState(false);
+
+  const handleCloseOfferModal = () => setShowOfferModal(false);
+  const handleShowOfferModal = () => setShowOfferModal(true);
+
+  const makeAnOfferHandler = () => {
+    handleShowOfferModal();
   };
 
   return (
@@ -135,6 +145,16 @@ const ProductScreen = () => {
                   <Button
                     className="btn-block"
                     type="button"
+                    disabled={product.countInStock === 0}
+                    onClick={makeAnOfferHandler}
+                  >
+                    Make an Offer
+                  </Button>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <Button
+                    className="btn-block"
+                    type="button"
                     disabled={cartItems.length === 0}
                     onClick={checkoutHandler}
                   >
@@ -145,7 +165,33 @@ const ProductScreen = () => {
             </Card>
           </Col>
         </Row>
-      )}
+      )
+      }
+
+      <Modal show={showOfferModal} onHide={handleCloseOfferModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Make an Offer</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <p>Your offer:</p>
+          <Form.Group controlId="offerAmount">
+          <Form.Control
+              type="number"
+              placeholder="Enter amount"
+              inputMode="numeric"
+              min="1"
+            />
+          </Form.Group>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="Secondary" onClick={handleCloseOfferModal}>
+            Close
+          </Button>
+          <Button variant="Primary" onClick={handleCloseOfferModal}>
+            Submit Offer
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };
