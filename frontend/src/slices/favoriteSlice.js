@@ -43,11 +43,11 @@ const favoriteSlice = createSlice({
       return updateCart(state);
     },
     
-    //resetCart: (state) => (state = initialState),
+    resetCart: (state) => (state = initialState),
 },
 });
 
 export const { addToCart, removeFromCart, saveShippingAddress,savePaymentMethod, 
-  clearCartItems, } = favoriteSlice.actions;
+  clearCartItems, resetCart} = favoriteSlice.actions;
 
 export default favoriteSlice.reducer;
