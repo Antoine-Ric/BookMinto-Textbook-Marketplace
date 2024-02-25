@@ -10,6 +10,8 @@ import Loader from "../components/Loader";
 import { useProfileMutation } from "../slices/usersApiSlice";
 // import { useGetMyOrdersQuery } from "../slices/ordersApiSlice";
 import { setCredentials } from "../slices/authSlice";
+import SideNavBar from "../components/SideNavBar.jsx";
+import Header from "../components/Header.jsx";
 
 const ProfileScreen = () => {
   const [name, setName] = useState("");
@@ -54,7 +56,12 @@ const ProfileScreen = () => {
   };
 
   return (
+    <>
+
     <Row>
+    
+    <SideNavBar />
+    
       <Col md={3}>
         <h2>User Profile</h2>
 
@@ -159,6 +166,7 @@ const ProfileScreen = () => {
         )}
       </Col> */}
     </Row>
+    </>
   );
 };
 
