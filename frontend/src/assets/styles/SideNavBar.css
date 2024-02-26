@@ -14,15 +14,16 @@
     background-color: var(--dark);
     width: 300px;
     height: 100vh;
-    position: fixed; /* Changed from relative to fixed */
-    top: 85px;
-    left: 0; /* Ensures it sticks to the left edge */
+    position: fixed; 
+    top: 97px;
+    left: 0; 
     color: var(--light);
     transition: 0.4s;
-    z-index: 1000; /* Ensures it's on top of other elements */
+    z-index: 1000; 
 }
 .side-nav-container-NX {
-	width: 85px;
+	width: 95px;
+	/* width: 85px; */
 }
 
 .nav-upper,
