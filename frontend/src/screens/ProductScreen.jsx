@@ -16,10 +16,13 @@ import Rating from "../components/Rating";
 import Message from "../components/Message";
 import { useGetProductDetailsQuery } from "../slices/productsApiSlice";
 import { addToCart } from "../slices/favoriteSlice";
+import Notification from "../components/Notification";
 //import { FaTrash } from "react-icons/fa";
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
+
+  const [notification, setNotification] = useState(null);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -55,11 +58,20 @@ const ProductScreen = () => {
     handleShowOfferModal();
   };
 
+  const offerHandler = () => {
+    setNotification({message: 'Offer submitted successfully!', type: 'sucess'});
+    handleCloseOfferModal();
+  };
+
   return (
     <>
       <Link className="btn btn-light my-3" to="/">
         Go Back
       </Link>
+
+    {notification && (
+      <Notification message={notification.message} type={notification.type} />
+    )}
 
       {isLoading ? (
         <Loader />
@@ -187,7 +199,7 @@ const ProductScreen = () => {
           <Button variant="Secondary" onClick={handleCloseOfferModal}>
             Close
           </Button>
-          <Button variant="Primary" onClick={handleCloseOfferModal}>
+          <Button variant="Primary" onClick={offerHandler}>
             Submit Offer
           </Button>
         </Modal.Footer>
