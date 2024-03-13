@@ -54,6 +54,7 @@ const HomeScreen = () => {
                   <Product product={product} />
                 </Col>
               ))}
+              {/*console.log(products)*/}
           </Row>
         </>
       )}
