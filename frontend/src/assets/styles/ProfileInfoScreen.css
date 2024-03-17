@@ -1,6 +1,7 @@
 .custom-table {
     border-radius: 10px;
     overflow: hidden;
+    margin-top: 20px;
   }
   
   .custom-table tr td{
