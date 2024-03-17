@@ -3,7 +3,7 @@ import { Table, Form, Button, Row, Col } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { FaTimes } from "react-icons/fa";
-
+import ProfileHeader from '../components/ProfileHeader';
 import { toast } from "react-toastify";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
@@ -55,8 +55,9 @@ const ProfileScreen = () => {
 
   return (
     <Row>
+      <ProfileHeader step1 step2 step3 step4/>
       <Col md={3}>
-        <h2>User Profile</h2>
+        <h2>Update Profile</h2>
 
         <Form onSubmit={submitHandler}>
           <Form.Group className="my-2" controlId="name">

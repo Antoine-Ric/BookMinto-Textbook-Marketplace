@@ -20,7 +20,8 @@ import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import FavoriteScreen from "./screens/FavoriteScreen";
 import ShippingScreen from './screens/ShippingScreen';
-import ProfileScreen from "./screens/ProfileScreen";
+import UpdateProfileScreen from "./screens/UpdateProfileScreen";
+import ProfileInfoScreen from "./screens/ProfileInfoScreen";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -34,7 +35,8 @@ const router = createBrowserRouter(
 
       <Route path='' element={<PrivateRoute />}>
       <Route path='/shipping' element={<ShippingScreen />} />
-      <Route path="/profile" element={<ProfileScreen />} />
+      <Route path="/profileupdate" element={<UpdateProfileScreen />} />
+      <Route path="/profileinfo" element={<ProfileInfoScreen />} />
     </Route>
 
     </Route>

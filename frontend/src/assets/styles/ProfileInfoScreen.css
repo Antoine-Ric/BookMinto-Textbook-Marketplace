@@ -1,0 +1,12 @@
+.custom-table {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .custom-table tr td{
+    border-bottom: none;
+  }
+
+  .custom-table tr th{
+    border-bottom: none;
+  }
