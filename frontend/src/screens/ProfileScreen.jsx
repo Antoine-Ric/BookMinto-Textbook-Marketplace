@@ -8,10 +8,8 @@ import { toast } from "react-toastify";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { useProfileMutation } from "../slices/usersApiSlice";
-// import { useGetMyOrdersQuery } from "../slices/ordersApiSlice";
+import { useGetMyOrdersQuery } from "../slices/ordersApiSlice";
 import { setCredentials } from "../slices/authSlice";
-import SideNavBar from "../components/SideNavBar.jsx";
-import Header from "../components/Header.jsx";
 
 const ProfileScreen = () => {
   const [name, setName] = useState("");
@@ -21,7 +19,7 @@ const ProfileScreen = () => {
 
   const { userInfo } = useSelector((state) => state.auth);
 
-  //   const { data: orders, isLoading, error } = useGetMyOrdersQuery();
+    const { data: orders, isLoading, error } = useGetMyOrdersQuery();
 
   const [updateProfile, { isLoading: loadingUpdateProfile }] =
     useProfileMutation();
@@ -56,12 +54,7 @@ const ProfileScreen = () => {
   };
 
   return (
-    <>
-
     <Row>
-    
-    <SideNavBar />
-    
       <Col md={3}>
         <h2>User Profile</h2>
 
@@ -112,7 +105,7 @@ const ProfileScreen = () => {
           {loadingUpdateProfile && <Loader />}
         </Form>
       </Col>
-      {/* <Col md={9}>
+      <Col md={9}>
         <h2>My Orders</h2>
         {isLoading ? (
           <Loader />
@@ -164,9 +157,8 @@ const ProfileScreen = () => {
             </tbody>
           </Table>
         )}
-      </Col> */}
+      </Col>
     </Row>
-    </>
   );
 };
 
