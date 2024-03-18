@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import "./assets/styles/index.css";
 import "./assets/styles/bootstrap.custom.css";
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import PrivateRoute from './components/PrivateRoute';
@@ -19,6 +20,8 @@ import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";
 import FavoriteScreen from "./screens/FavoriteScreen";
 import ShippingScreen from './screens/ShippingScreen';
+import UpdateProfileScreen from "./screens/UpdateProfileScreen";
+import ProfileInfoScreen from "./screens/ProfileInfoScreen";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,6 +35,8 @@ const router = createBrowserRouter(
 
       <Route path='' element={<PrivateRoute />}>
       <Route path='/shipping' element={<ShippingScreen />} />
+      <Route path="/profileupdate" element={<UpdateProfileScreen />} />
+      <Route path="/profileinfo" element={<ProfileInfoScreen />} />
     </Route>
 
     </Route>

@@ -1,0 +1,13 @@
+.custom-table {
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 20px;
+  }
+  
+  .custom-table tr td{
+    border-bottom: none;
+  }
+
+  .custom-table tr th{
+    border-bottom: none;
+  }
