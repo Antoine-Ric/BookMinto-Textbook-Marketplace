@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Badge, Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { FaUser } from "react-icons/fa";
 import {  FaHeart } from "react-icons/fa";
+import { FaBell} from "react-icons/fa";
 import { LinkContainer } from "react-router-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useLogoutMutation } from "../slices/usersApiSlice";
@@ -51,6 +52,13 @@ const Header = () => {
                       {cartItems.reduce((a, c) => a + c.qty, 0)}
                     </Badge>
                   )}
+                </Nav.Link>
+              </LinkContainer>
+              <LinkContainer to="/offers">
+                <Nav.Link>
+                  <FaBell>
+                    
+                  </FaBell>
                 </Nav.Link>
               </LinkContainer>
               {userInfo ? (
