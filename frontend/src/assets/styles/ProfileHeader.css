@@ -1,0 +1,40 @@
+/* frontend/src/assets/styles/ProfileHeader.css */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 200px;
+  height: 100%;
+  background: #f0f0f0;
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebar.hidden {
+  transform: translateX(-200px); /* Ensure the sidebar fully hides off-screen */
+}
+
+.sidebar.visible {
+  transform: translateX(0);
+}
+
+.sidebar-toggle-icon {
+  position: fixed; /* Use fixed to ensure it stays in place when scrolling */
+  top: 10px;
+  right: 10px; /* Adjust if the icon overlaps with content */
+  cursor: pointer;
+  font-size: 24px; /* Adjust the size of the icon as needed */
+  z-index: 1050;
+}
+
+/* Ensures the main content adjusts when the sidebar is toggled */
+.main-content-adjusted {
+  transition: margin-left 0.3s ease;
+  margin-left: 200px; /* Match the sidebar width to push content to the right */
+}
+
+/* Use this class when the sidebar is hidden to remove the margin */
+.main-content {
+  transition: margin-left 0.3s ease;
+  margin-left: 0;
+}

@@ -22,6 +22,7 @@ import FavoriteScreen from "./screens/FavoriteScreen";
 import ShippingScreen from './screens/ShippingScreen';
 import UpdateProfileScreen from "./screens/UpdateProfileScreen";
 import ProfileInfoScreen from "./screens/ProfileInfoScreen";
+import MyOrders from "./screens/ProfileMyOrders";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -37,6 +38,8 @@ const router = createBrowserRouter(
       <Route path='/shipping' element={<ShippingScreen />} />
       <Route path="/profileupdate" element={<UpdateProfileScreen />} />
       <Route path="/profileinfo" element={<ProfileInfoScreen />} />
+      <Route path="/myorders" element={<MyOrders/>} />
+
     </Route>
 
     </Route>
