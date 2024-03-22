@@ -17,14 +17,6 @@ const FavoriteScreen = ({ product }) => {
   const [removedFavorites, setRemovedFavorites] = useState({});
 
   const removeFromCartHandler = (id) => {
-    /* This code is for if Raul really wants to use Grailed Website However, its not recommended to do it like that. And the badge will not be updated until user reloads.*/
-    // dispatch(removeFromCart({ ...product, qty }));
-    // // Mark the item as removed in local state and localStorage
-    // setRemovedFavorites((prev) => {
-    //   const updated = { ...prev, [id]: true };
-    //   localStorage.setItem("removedFavorites", JSON.stringify(updated));
-    //   return updated;
-    // });
 
     dispatch(removeFromCart(id));
     setRemovedFavorites((prev) => ({ ...prev, [id]: true }));

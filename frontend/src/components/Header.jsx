@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Badge, Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { FaUser } from "react-icons/fa";
 import {  FaHeart, FaBell } from "react-icons/fa";
 import { LinkContainer } from "react-router-bootstrap";
@@ -42,12 +42,8 @@ const Header = () => {
             <Nav className="ms-auto">
               <LinkContainer to="/favorites">
                 <Nav.Link>
-                  <FaHeart />
-                  {cartItems.length > 0 && (
-                    <Badge pill bg="success" style={{ marginLeft: "5px" }}>
-                      {cartItems.reduce((a, c) => a + c.qty, 0)}
-                    </Badge>
-                  )}
+                  <FaHeart /> 
+                  
                 </Nav.Link>
               </LinkContainer>
               <LinkContainer to="/offers">
