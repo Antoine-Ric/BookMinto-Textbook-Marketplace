@@ -2,39 +2,61 @@
 .sidebar {
   position: fixed;
   left: 0;
-  top: 0;
-  width: 200px;
-  height: 100%;
-  background: #f0f0f0;
+  top: 97px; 
+  width: 250px; 
+  height: calc(100% - 97px);
+  background: #f3f3f2; 
   transition: transform 0.3s ease;
   z-index: 1000;
+  border-radius: 10px; 
+  padding: 10px 0; 
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05); 
+  display: flex;
+  flex-direction: column; 
 }
 
-.sidebar.hidden {
-  transform: translateX(-200px); /* Ensure the sidebar fully hides off-screen */
+/* Style the nav links */
+.sidebar a {
+  color: #333; 
+  padding: 40px 20px; 
+  display: flex; 
+  align-items: center; 
+  text-decoration: none; 
+  font-size: 16px; 
+  border-bottom: 1px solid #e1e4e8;
 }
 
-.sidebar.visible {
-  transform: translateX(0);
+/* Optional: Style the icon
+.sidebar a i {
+  margin-right: 10px; 
+  color: #555; 
+} */
+
+/* Style the nav items on hover */
+.sidebar a:hover {
+  background-color: #e1e4e8; 
 }
 
-.sidebar-toggle-icon {
-  position: fixed; /* Use fixed to ensure it stays in place when scrolling */
-  top: 10px;
-  right: 10px; /* Adjust if the icon overlaps with content */
-  cursor: pointer;
-  font-size: 24px; /* Adjust the size of the icon as needed */
-  z-index: 1050;
+/* Highlight the active nav item */
+.sidebar a.active {
+  background-color: #ddd;
+  font-weight: bold; 
 }
 
-/* Ensures the main content adjusts when the sidebar is toggled */
-.main-content-adjusted {
+/* Adjust the main content area */
+.content {
   transition: margin-left 0.3s ease;
-  margin-left: 200px; /* Match the sidebar width to push content to the right */
+  margin-left: 200px; 
 }
 
-/* Use this class when the sidebar is hidden to remove the margin */
-.main-content {
-  transition: margin-left 0.3s ease;
-  margin-left: 0;
+@media (max-width: 768px) {
+  .sidebar {
+    width: 80%; 
+    height: 100%; 
+    top: 0; 
+  }
+
+  .content {
+    margin-left: 0; 
+  }
 }

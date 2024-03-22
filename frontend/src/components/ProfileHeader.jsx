@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import '../assets/styles/ProfileHeader.css';
 
-const ProfileHeader = () => {
+const ProfileHeader = ({ isSidebarOpen, toggleSidebar }) => {
   return (
-    <Nav className='justify-content-center mb-4'>
+    <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
+      {/* <button onClick={toggleSidebar} className="toggle-button">
+        {isSidebarOpen ? 'Close' : 'Open'} Sidebar
+      </button> */}
+      <Nav className='flex-column'>
       <Nav.Item>
           <LinkContainer to='/profileinfo'>
             <Nav.Link>Profile Info</Nav.Link>
@@ -29,6 +34,7 @@ const ProfileHeader = () => {
           </LinkContainer>
       </Nav.Item>
     </Nav>
+    </div>
   );
 };
 

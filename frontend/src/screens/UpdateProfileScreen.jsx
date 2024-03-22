@@ -14,7 +14,7 @@ const ProfileScreen = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const { userInfo } = useSelector((state) => state.auth);
-
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const [updateProfile, { isLoading: loadingUpdateProfile }] =
     useProfileMutation();
@@ -50,7 +50,8 @@ const ProfileScreen = () => {
 
   return (
     <Row>
-      <ProfileHeader step1 step2 step3 step4/>
+      <ProfileHeader toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
+      <div className={`content ${isSidebarOpen ? 'shifted' : ''}`}>
       <Col md={7}>
         <h2>Update Profile</h2>
 
@@ -101,7 +102,7 @@ const ProfileScreen = () => {
           {loadingUpdateProfile && <Loader />}
         </Form>
       </Col>
-
+      </div>
       
     </Row>
   );

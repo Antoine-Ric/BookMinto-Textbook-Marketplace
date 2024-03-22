@@ -9,6 +9,7 @@ const ProfileScreen = () => {
   const [email, setEmail] = useState("");
   const { userInfo } = useSelector((state) => state.auth);
 
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   useEffect(() => {
     setName(userInfo.name);
@@ -17,7 +18,8 @@ const ProfileScreen = () => {
 
   return (
     <Row>
-      <ProfileHeader step1 step2 step3 step4 />
+      <ProfileHeader toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
+      <div className={`content ${isSidebarOpen ? 'shifted' : ''}`}>
 
       <Col md={9}>
         <h2>Profile Info Page</h2>
@@ -34,6 +36,7 @@ const ProfileScreen = () => {
           </tbody>
         </Table>
       </Col>
+      </div>
     </Row>
   );
 };

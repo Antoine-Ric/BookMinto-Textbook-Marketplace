@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { Table, Button, Row, Col } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { FaTimes } from "react-icons/fa";
@@ -8,10 +9,12 @@ import { useGetMyOrdersQuery } from "../slices/ordersApiSlice";
 
 const ProfileScreen = () => {
     const { data: orders, isLoading, error } = useGetMyOrdersQuery();
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <Row> 
-        <ProfileHeader/>
+        <ProfileHeader toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
+      <div className={`content ${isSidebarOpen ? 'shifted' : ''}`}>
       <Col md={9}>
         <h2>My Orders</h2>
         {isLoading ? (
@@ -65,6 +68,7 @@ const ProfileScreen = () => {
           </Table>
         )}
       </Col>
+      </div>
     </Row>
   );
 };
