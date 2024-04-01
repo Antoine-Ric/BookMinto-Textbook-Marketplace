@@ -1,50 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import '../assets/styles/ProfileHeader.css';
 
-const ProfileHeader = ({ step1, step2, step3, step4 }) => {
+const ProfileHeader = ({ isSidebarOpen, toggleSidebar }) => {
   return (
-    <Nav className='justify-content-center mb-4'>
+    <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
+      {/* <button onClick={toggleSidebar} className="toggle-button">
+        {isSidebarOpen ? 'Close' : 'Open'} Sidebar
+      </button> */}
+      <Nav className='flex-column'>
       <Nav.Item>
-        {step1 ? (
-          <LinkContainer to='/login'>
-            <Nav.Link>Sign In</Nav.Link>
-          </LinkContainer>
-        ) : (
-          <Nav.Link disabled>Sign In</Nav.Link>
-        )}
-      </Nav.Item>
-
-      <Nav.Item>
-        {step2 ? (
-          <LinkContainer to='/profileupdate'>
-            <Nav.Link>Update Profile</Nav.Link>
-          </LinkContainer>
-        ) : (
-          <Nav.Link disabled>Shipping</Nav.Link>
-        )}
-      </Nav.Item>
-
-      <Nav.Item>
-        {step3 ? (
           <LinkContainer to='/profileinfo'>
             <Nav.Link>Profile Info</Nav.Link>
           </LinkContainer>
-        ) : (
-          <Nav.Link>Profile Info</Nav.Link>
-        )}
       </Nav.Item>
 
       <Nav.Item>
-        {step4 ? (
-          <LinkContainer to='/placeorder'>
-            <Nav.Link>Place Order</Nav.Link>
+          <LinkContainer to='/profileupdate'>
+            <Nav.Link>Update Profile</Nav.Link>
           </LinkContainer>
-        ) : (
-          <Nav.Link disabled>Place Order</Nav.Link>
-        )}
+      </Nav.Item>
+
+      <Nav.Item>
+          <LinkContainer to='/notifications'>
+            <Nav.Link>Notifications</Nav.Link>
+          </LinkContainer>
+      </Nav.Item>
+
+      <Nav.Item>
+          <LinkContainer to='/myorders'>
+            <Nav.Link>My Orders</Nav.Link>
+          </LinkContainer>
       </Nav.Item>
     </Nav>
+    </div>
   );
 };
 

@@ -1,0 +1,62 @@
+/* frontend/src/assets/styles/ProfileHeader.css */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 97px; 
+  width: 250px; 
+  height: calc(100% - 97px);
+  background: #f3f3f2; 
+  transition: transform 0.3s ease;
+  z-index: 1000;
+  border-radius: 10px; 
+  padding: 10px 0; 
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05); 
+  display: flex;
+  flex-direction: column; 
+}
+
+/* Style the nav links */
+.sidebar a {
+  color: #333; 
+  padding: 20px 20px; 
+  display: flex; 
+  align-items: center; 
+  text-decoration: none; 
+  font-size: 16px; 
+  border-bottom: 1px solid #e1e4e8;
+}
+
+/* Optional: Style the icon
+.sidebar a i {
+  margin-right: 10px; 
+  color: #555; 
+} */
+
+/* Style the nav items on hover */
+.sidebar a:hover {
+  background-color: #e1e4e8; 
+}
+
+/* Highlight the active nav item */
+.sidebar a.active {
+  background-color: #ddd;
+  font-weight: bold; 
+}
+
+/* Adjust the main content area */
+.content {
+  transition: margin-left 0.3s ease;
+  margin-left: 200px; 
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 80%; 
+    height: 100%; 
+    top: 0; 
+  }
+
+  .content {
+    margin-left: 0; 
+  }
+}

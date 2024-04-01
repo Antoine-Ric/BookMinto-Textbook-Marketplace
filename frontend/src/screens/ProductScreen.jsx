@@ -18,9 +18,12 @@ import { useGetProductDetailsQuery } from "../slices/productsApiSlice";
 import { addToCart } from "../slices/favoriteSlice";
 import Notification from "../components/Notification";
 import { setSelectedProduct } from "../slices/checkoutSlice";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 //import { FaTrash } from "react-icons/fa";
 
 const ProductScreen = () => {
+  <ToastContainer position="bottom-right" />
   const { id: productId } = useParams();
 
   const [notification, setNotification] = useState(null);
@@ -44,16 +47,26 @@ const ProductScreen = () => {
   
   
 
-
   const {
     data: product,
     isLoading,
     error,
   } = useGetProductDetailsQuery(productId);
 
+  const isItemInFavorites = cartItems.some(item => item._id === productId);
+
   const addToCartHandler = () => {
     dispatch(addToCart({ ...product, qty }));
-    navigate("/favorites");
+    // navigate("/favorites");
+    toast.success('This item has been added to favorites', {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   const [showOfferModal, setShowOfferModal] = useState(false);
@@ -157,9 +170,11 @@ const ProductScreen = () => {
                   <Button
                     className="btn-block"
                     type="button"
+                    disabled={isItemInFavorites}
                     onClick={addToCartHandler}
                   >
-                    Add to Favorites
+                     {isItemInFavorites ? 'In Favorites' : 'Add to Favorites'}
+                    {/* Add to Favorites */}
                   </Button>
                 </ListGroup.Item>
                 <ListGroup.Item>

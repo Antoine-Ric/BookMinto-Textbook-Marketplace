@@ -26,6 +26,8 @@ import UpdateProfileScreen from "./screens/UpdateProfileScreen";
 import ProfileInfoScreen from "./screens/ProfileInfoScreen";
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
+import MyOrders from "./screens/ProfileMyOrders";
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -33,7 +35,6 @@ const router = createBrowserRouter(
       <Route index={true} path="/" element={<HomeScreen />} />
       <Route path="/search/:keyword" element={<HomeScreen />} />
       <Route path="/product/:id" element={<ProductScreen />} />
-      <Route path="/favorites" element={<FavoriteScreen />} />
       <Route path="/login" element={<LoginScreen />} />
       <Route path="/register" element={<RegisterScreen />} />
 
@@ -44,6 +45,10 @@ const router = createBrowserRouter(
       <Route path='/order/:id' element={<OrderScreen />} />
       <Route path="/profileupdate" element={<UpdateProfileScreen />} />
       <Route path="/profileinfo" element={<ProfileInfoScreen />} />
+      <Route path="/myorders" element={<MyOrders/>} />
+      <Route path="/favorites" element={<FavoriteScreen />} />
+
+
     </Route>
 
     </Route>
