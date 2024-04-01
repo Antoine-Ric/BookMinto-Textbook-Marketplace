@@ -8,7 +8,7 @@ import { removeFromCart } from "../slices/favoriteSlice";
 
 const FavoriteScreen = ({ product }) => {
   const dispatch = useDispatch();
-  const [qty] = useState(1);
+  //const [qty] = useState(1);
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
