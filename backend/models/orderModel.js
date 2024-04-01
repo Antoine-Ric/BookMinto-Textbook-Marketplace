@@ -1,5 +1,17 @@
 import mongoose from "mongoose";
 
+const orderItemSchema = mongoose.Schema({
+  name: { type: String, required: true },
+  qty: { type: Number, required: true },
+  image: { type: String, required: true },
+  price: { type: Number, required: true },
+  product: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'Product', // Assuming 'Product' is the model for products
+  },
+});
+
 const orderSchema = mongoose.Schema(
   {
     user: {
@@ -7,19 +19,7 @@ const orderSchema = mongoose.Schema(
       required: true,
       ref: "User",
     },
-    orderItems: [
-      {
-        name: { type: String, required: true },
-        qty: { type: Number, required: true },
-        image: { type: String, required: true },
-        price: { type: Number, required: true },
-        product: {
-          type: mongoose.Schema.Types.ObjectId,
-          required: true,
-          ref: "Product",
-        },
-      },
-    ],
+    orderItems: [orderItemSchema], // Use the orderItemSchema for orderItems
     shippingAddress: {
       address: { type: String, required: true },
       city: { type: String, required: true },
@@ -30,14 +30,12 @@ const orderSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-
     paymentResult: {
       id: { type: String },
       status: { type: String },
       update_time: { type: String },
       email_address: { type: String },
     },
-
     itemsPrice: {
       type: Number,
       required: true,
@@ -80,6 +78,6 @@ const orderSchema = mongoose.Schema(
   }
 );
 
-const Order = mongoose.model("Order", orderSchema);
+const Order = mongoose.model('Order', orderSchema);
 
 export default Order;
