@@ -7,9 +7,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { useLogoutMutation } from "../slices/usersApiSlice";
 import { logout } from "../slices/authSlice";
 import logo from "../assets/mintlogosmall.png";
+import { selectFavoritesCount } from '../slices/favoriteSlice'; // Correctly import the selector
+
 
 const Header = () => {
   const { cartItems } = useSelector((state) => state.cart);
+
+  const favoritesCount = useSelector(selectFavoritesCount); // Get favorites count from Redux store
+
   const { userInfo } = useSelector((state) => state.auth);
 
   const dispatch = useDispatch();
@@ -42,7 +47,7 @@ const Header = () => {
             <Nav className="ms-auto">
               <LinkContainer to="/favorites">
                 <Nav.Link>
-                  <FaHeart /> 
+                  <FaHeart /> {favoritesCount}
                   
                 </Nav.Link>
               </LinkContainer>

@@ -50,4 +50,7 @@ const favoriteSlice = createSlice({
 export const { addToCart, removeFromCart, saveShippingAddress,savePaymentMethod, 
   clearCartItems, } = favoriteSlice.actions;
 
+export const selectFavoritesCount = state => state.cart.cartItems.length;
+
+
 export default favoriteSlice.reducer;

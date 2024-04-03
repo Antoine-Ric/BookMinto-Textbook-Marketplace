@@ -34,7 +34,7 @@ const ProductScreen = () => {
 
   const selectedProduct = useSelector((state) => state.checkout.selectedProduct);
 
-  const isItemInFavorites = useSelector((state) => state.favorite.isItemInFavorites) || false;
+  //const isItemInFavorites = useSelector((state) => state.favorite.isItemInFavorites) || false;
 
   const [qty, setQty] = useState(1);
 
@@ -166,17 +166,17 @@ const ProductScreen = () => {
                     </Row>
                   </ListGroup.Item>
                 )}
-                <ListGroup.Item>
+                 {/* Add the Add to Favorites button here */}
+                 <ListGroup.Item>
                   <Button
                     className="btn-block"
                     type="button"
-                    disabled={isItemInFavorites}
                     onClick={addToCartHandler}
                   >
-                     {isItemInFavorites ? 'In Favorites' : 'Add to Favorites'}
-                    {/* Add to Favorites */}
+                    Add to Favorites
                   </Button>
                 </ListGroup.Item>
+                {/* End of Add to Favorites button */}
                 <ListGroup.Item>
                   <Button
                     className="btn-block"
