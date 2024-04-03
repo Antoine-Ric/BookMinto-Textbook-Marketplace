@@ -11,7 +11,7 @@ export const updateCart = (state) => {
   state.shippingPrice = addDecimals(state.itemsPrice > 100 ? 0 : 10);
 
   // calculate tax price (15% tax)
-  state.taxPrice = addDecimals(Number((0.15 * state.itemsPrice).toFixed(2)));
+  state.taxPric3e = addDecimals(Number((0.15 * state.itemsPrice).toFixed(2)));
 
   //Calculate total Price
   state.totalPrice = (
@@ -24,3 +24,4 @@ export const updateCart = (state) => {
 
   return state;
 };
+

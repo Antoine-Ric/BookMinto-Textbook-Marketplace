@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, ListGroup, Image, Button } from "react-bootstrap";
@@ -14,28 +14,12 @@ const FavoriteScreen = ({ product }) => {
   const { cartItems } = cart;
 
   // State to track items removed from favorites before page reload
-  const [removedFavorites, setRemovedFavorites] = useState({});
+  const [removedFavorites] = useState({});
 
   const removeFromCartHandler = (id) => {
-
+    // has to be done traditional way so that cart is cleared on logout
     dispatch(removeFromCart(id));
-    setRemovedFavorites((prev) => ({ ...prev, [id]: true }));
-
-    localStorage.setItem("removedFavorites", JSON.stringify({ ...removedFavorites, [id]: true }));
   };
-
-  useEffect(() => {
-    // On component mount, check for items marked for removal and remove them from the cart
-    const removedItems = JSON.parse(
-      localStorage.getItem("removedFavorites") || "{}"
-    );
-    Object.keys(removedItems).forEach((id) => {
-      dispatch(removeFromCart(id));
-    });
-
-    // Optionally, clear the marked items from localStorage if you don't want them to be removed on subsequent reloads
-    localStorage.removeItem("removedFavorites");
-  }, [dispatch]);
 
   return (
     <Row>
@@ -81,3 +65,4 @@ const FavoriteScreen = ({ product }) => {
 };
 
 export default FavoriteScreen;
+
