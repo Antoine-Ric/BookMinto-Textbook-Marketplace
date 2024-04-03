@@ -15,7 +15,7 @@ const reviewSchema = mongoose.Schema(
     timestamps: true,
   }
 );
-
+  // remove category and brand sections later
 const productSchema = new mongoose.Schema(
   {
     user: {
@@ -27,6 +27,14 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    isbn: {
+      type: String,
+      required: true,
+    },
+    author: {
+      type: String,
+      required: true,
+    },
     image: {
       type: String,
       required: true,
@@ -34,6 +42,10 @@ const productSchema = new mongoose.Schema(
     brand: {
       type: String,
       required: false,
+    },
+    subject: {
+      type: String,
+      reqired: true,
     },
     category: {
       type: String,
