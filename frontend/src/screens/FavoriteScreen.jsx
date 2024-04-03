@@ -17,22 +17,11 @@ const FavoriteScreen = ({ product }) => {
   const [removedFavorites, setRemovedFavorites] = useState({});
 
   const removeFromCartHandler = (id) => {
-    /* This code is for if Raul really wants to use Grailed Website However, its not recommended to do it like that. And the badge will not be updated until user reloads.*/
-    // dispatch(removeFromCart({ ...product, qty }));
-    // // Mark the item as removed in local state and localStorage
-    // setRemovedFavorites((prev) => {
-    //   const updated = { ...prev, [id]: true };
-    //   localStorage.setItem("removedFavorites", JSON.stringify(updated));
-    //   return updated;
-    // });
-
+    // has to be done traditional way so that cart is cleared on logout
     dispatch(removeFromCart(id));
-    setRemovedFavorites((prev) => ({ ...prev, [id]: true }));
-
-    localStorage.setItem("removedFavorites", JSON.stringify({ ...removedFavorites, [id]: true }));
   };
 
-  useEffect(() => {
+  /*useEffect(() => {
     // On component mount, check for items marked for removal and remove them from the cart
     const removedItems = JSON.parse(
       localStorage.getItem("removedFavorites") || "{}"
@@ -43,7 +32,7 @@ const FavoriteScreen = ({ product }) => {
 
     // Optionally, clear the marked items from localStorage if you don't want them to be removed on subsequent reloads
     localStorage.removeItem("removedFavorites");
-  }, [dispatch]);
+  }, [dispatch]);*/
 
   return (
     <Row>
@@ -89,3 +78,4 @@ const FavoriteScreen = ({ product }) => {
 };
 
 export default FavoriteScreen;
+
