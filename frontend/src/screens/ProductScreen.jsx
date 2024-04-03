@@ -18,10 +18,13 @@ import { useGetProductDetailsQuery } from "../slices/productsApiSlice";
 import { addToCart } from "../slices/favoriteSlice";
 import Notification from "../components/Notification";
 import { setSelectedProduct } from "../slices/checkoutSlice";
+import { toast } from "react-toastify"; // Import toast from react-toastify
+import "react-toastify/dist/ReactToastify.css"; // Import the CSS for toastify
+
+
 //import { FaTrash } from "react-icons/fa";
 
 const ProductScreen = () => {
-  <ToastContainer position="bottom-right" />
   const { id: productId } = useParams();
 
   const [notification, setNotification] = useState(null);
@@ -31,6 +34,7 @@ const ProductScreen = () => {
 
   const selectedProduct = useSelector((state) => state.checkout.selectedProduct);
 
+  const isItemInFavorites = useSelector((state) => state.favorite.isItemInFavorites) || false;
 
   const [qty, setQty] = useState(1);
 
@@ -50,7 +54,6 @@ const ProductScreen = () => {
     error,
   } = useGetProductDetailsQuery(productId);
 
-  const isItemInFavorites = cartItems.some(item => item._id === productId);
 
   const addToCartHandler = () => {
     dispatch(addToCart({ ...product, qty }));
