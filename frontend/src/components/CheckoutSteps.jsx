@@ -1,19 +1,28 @@
 import React from 'react';
 import { Nav } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import { useDispatch } from 'react-redux';
+import { removeHiddenFromCart } from '../slices/favoriteSlice';
 
 const CheckoutSteps = ({ step1, step2, step3, step4 }) => {
+
+  const dispatch = useDispatch();
+
+  const handleLinkClick = () => {
+    dispatch(removeHiddenFromCart());
+  };
+
   return (
     <Nav className='justify-content-center mb-4'>
-      <Nav.Item>
-        {step1 ? (
-          <LinkContainer to='/login'>
-            <Nav.Link>Sign In</Nav.Link>
-          </LinkContainer>
-        ) : (
-          <Nav.Link disabled>Sign In</Nav.Link>
-        )}
-      </Nav.Item>
+    <Nav.Item>
+      {step1 ? (
+        <LinkContainer to='/login'>
+          <Nav.Link onClick={handleLinkClick}>Sign In</Nav.Link>
+        </LinkContainer>
+      ) : (
+        <Nav.Link disabled>Sign In</Nav.Link>
+      )}
+    </Nav.Item>
 
       <Nav.Item>
         {step2 ? (
