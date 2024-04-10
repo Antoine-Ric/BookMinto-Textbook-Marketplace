@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Table, Button, Row, Col } from "react-bootstrap";
 import { useGetProductsQuery } from "../slices/productsApiSlice";
 import ProfileHeader from '../components/ProfileHeader';
@@ -10,7 +11,15 @@ const MyListings = () => {
     const {data: products, isLoading, error} = useGetProductsQuery("");
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     console.log(products);
-    // map through products that contain current user as the seller
+
+    // get user info:
+    const [email, setEmail] = useState("");
+    const { userInfo } = useSelector((state) => state.auth);
+
+    useEffect(() => {
+        setEmail(userInfo.email);
+    }, [userInfo.email]);
+    
     // figure out why isbn is not showing 
     return <>
         <ProfileHeader toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
@@ -44,7 +53,7 @@ const MyListings = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {products.map((product) => (
+                            {products.filter((product) => product.userEmail === email).map((product) => (
                                 <tr key={product._id}>
                                     <td>{product._id}</td>
                                     <td>{product.ISBN}</td>

@@ -27,13 +27,13 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    isbn: {
+    ISBN: {
       type: String,
       required: true,
     },
-    author: {
+    Author: {
       type: String,
-      required: true,
+      //required: true, // uncomment this later
     },
     image: {
       type: String,
@@ -43,7 +43,7 @@ const productSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
-    subject: {
+    Subject: {
       type: String,
       reqired: true,
     },
@@ -54,6 +54,10 @@ const productSchema = new mongoose.Schema(
     description: {
       type: String,
       required: true,
+    },
+    userEmail: { 
+      type: String, 
+      required: true, 
     },
     review: [reviewSchema],
     rating: {
