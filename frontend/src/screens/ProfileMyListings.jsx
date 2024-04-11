@@ -19,7 +19,7 @@ const MyListings = () => {
     useEffect(() => {
         setEmail(userInfo.email);
     }, [userInfo.email]);
-    
+
     // figure out why isbn is not showing 
     return <>
         <ProfileHeader toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
@@ -62,7 +62,7 @@ const MyListings = () => {
                                     <td>${product.price}</td>
                                     <td>{product.Subject}</td>
                                     {/*<td>
-                                        <LinkContainer to={`/admin/product/${product._id}/edit`}>
+                                        <LinkContainer to={`/product/${product._id}/edit`}>
                                             <Button variant='light' className='btn-sm mx-2'>
                                                 <FaEdit />
                                             </Button>

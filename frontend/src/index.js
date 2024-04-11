@@ -36,14 +36,13 @@ const router = createBrowserRouter(
       <Route path="/register" element={<RegisterScreen />} />
 
       <Route path='' element={<PrivateRoute />}>
-      <Route path='/shipping' element={<ShippingScreen />} />
-      <Route path="/profileupdate" element={<UpdateProfileScreen />} />
-      <Route path="/profileinfo" element={<ProfileInfoScreen />} />
-      <Route path="/myorders" element={<MyOrders/>} />
-      <Route path="/mylistings" element={<MyListings/>} />
-
-    </Route>
-
+        <Route path='/shipping' element={<ShippingScreen />} />
+        <Route path="/profileupdate" element={<UpdateProfileScreen />} />
+        <Route path="/profileinfo" element={<ProfileInfoScreen />} />
+        <Route path="/myorders" element={<MyOrders/>} />
+        <Route path="/mylistings" element={<MyListings/>} />
+        {/*<Route path='/product/:id/edit' element={<ProductEditScreen />} />*/}
+      </Route>
     </Route>
     
   )
