@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from "react";
+import { LinkContainer } from 'react-router-bootstrap';
 import { useSelector } from "react-redux";
 import { Table, Button, Row, Col } from "react-bootstrap";
-import { useGetProductsQuery } from "../slices/productsApiSlice";
 import ProfileHeader from '../components/ProfileHeader';
-import { FaEdit } from "react-icons/fa";
+import { FaEdit, FaPlus, FaTrash } from "react-icons/fa";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import { 
+    useGetProductsQuery,
+    useDeleteProductMutation,
+    useCreateProductMutation,
+} from "../slices/productsApiSlice";
+import { toast } from 'react-toastify';
 
 const MyListings = () => {
-    const {data: products, isLoading, error} = useGetProductsQuery("");
+    const {data: products, isLoading, error, refetch} = useGetProductsQuery("");
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     console.log(products);
 
@@ -20,7 +26,36 @@ const MyListings = () => {
         setEmail(userInfo.email);
     }, [userInfo.email]);
 
-    // figure out why isbn is not showing 
+    // handlers
+    const [deleteProduct, { isLoading: loadingDelete }] = useDeleteProductMutation();
+
+    const deleteHandler = async (id) => {
+        if (window.confirm('Are you sure')) {
+          try {
+            await deleteProduct(id);
+            toast.success('Product deleted')
+            refetch();
+          } catch (err) {
+            toast.error(err?.data?.message || err.error);
+          }
+        }
+      };
+
+    const [createProduct, { isLoading: loadingCreate }] = useCreateProductMutation();
+
+    const createProductHandler = async () => {
+        if (window.confirm('Are you sure you want to create a new product?')) {
+        try {
+            await createProduct();
+            refetch();
+        } catch (err) {
+            toast.error(err?.data?.message || err.error);
+        }
+        }
+    };
+
+
+
     return <>
         <ProfileHeader toggleSidebar={() => setIsSidebarOpen(!isSidebarOpen)} />
         <Row className="align-items-center">
@@ -28,12 +63,14 @@ const MyListings = () => {
                 <h2>My Listings</h2>
             </Col>
             <Col className="text-end">
-                <Button className="btn-sm m-3">
-                    <FaEdit /> Create New Listing
+                <Button className="btn-sm m-3" onClick={createProductHandler}>
+                    <FaPlus /> Create New Listing
                 </Button>
             </Col>
         </Row >
         <div className={`content ${isSidebarOpen ? 'shifted' : ''}`}>
+        {loadingCreate && <Loader />}
+        {loadingDelete && <Loader />}
         {isLoading ? (<Loader />) : error ? (
             <Message variant="danger">
                 {error?.data?.message || error.error}
@@ -61,7 +98,7 @@ const MyListings = () => {
                                     <td>{product.Author}</td>
                                     <td>${product.price}</td>
                                     <td>{product.Subject}</td>
-                                    {/*<td>
+                                    <td>
                                         <LinkContainer to={`/product/${product._id}/edit`}>
                                             <Button variant='light' className='btn-sm mx-2'>
                                                 <FaEdit />
@@ -74,7 +111,7 @@ const MyListings = () => {
                                         >
                                         <FaTrash style={{ color: 'white' }} />
                                         </Button>
-                                    </td>*/}
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
