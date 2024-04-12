@@ -10,7 +10,7 @@ import SearchBox from "../components/SearchBox";
 const HomeScreen = () => {
   const {keyword} = useParams()
   const { data: products, isLoading, error } = useGetProductsQuery({keyword});
-  const subjects = ['Science', 'Technology', 'Social Science', 'Business']
+  const subjects = ['Science', 'Technology', 'Math', 'Engineering', 'Social Science', 'Business', 'Other']
   return (
     <>
       {isLoading ? (
@@ -40,7 +40,7 @@ const HomeScreen = () => {
               ))}
           </Row>
           <Row>
-            <h2>Social Science</h2>
+            <h2>Math</h2>
               {products.filter((product) => product.Subject === subjects[2]).map((product, index) => (
                 <Col key={index} sm={12} md={6} lg={4} xl={3}>
                   <Product product={product} />
@@ -48,7 +48,7 @@ const HomeScreen = () => {
               ))}
           </Row>
           <Row>
-            <h2>Business</h2>
+            <h2>Engineering</h2>
             {products.filter((product) => product.Subject === subjects[3]).map((product, index) => (
                 <Col key={index} sm={12} md={6} lg={4} xl={3}>
                   <Product product={product} />
@@ -56,8 +56,24 @@ const HomeScreen = () => {
               ))}
           </Row>
           <Row>
+            <h2>Social Science</h2>
+            {products.filter((product) => product.Subject === subjects[4]).map((product, index) => (
+                <Col key={index} sm={12} md={6} lg={4} xl={3}>
+                  <Product product={product} />
+                </Col>
+              ))}
+          </Row>
+          <Row>
+            <h2>Business</h2>
+            {products.filter((product) => product.Subject === subjects[5]).map((product, index) => (
+                <Col key={index} sm={12} md={6} lg={4} xl={3}>
+                  <Product product={product} />
+                </Col>
+              ))}
+          </Row>
+          <Row>
             <h2>Other</h2>
-            {products.filter((product) => !subjects.includes(product.Subject)).map((product, index) => (
+            {products.filter((product) => product.Subject === subjects[6]).map((product, index) => (
                 <Col key={index} sm={12} md={6} lg={4} xl={3}>
                   <Product product={product} />
                 </Col>

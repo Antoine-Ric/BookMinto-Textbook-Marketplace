@@ -42,7 +42,7 @@ const createProduct = asyncHandler(async (req, res) => {
     Author: "Sample Author",
     Subject: "Sample Subject",
     ISBN: "Sample ISBN",
-    countInStock: 0,
+    countInStock: 1,
     numReviews: 0,
     description: 'Sample description',
     userEmail: req.user.email
