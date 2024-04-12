@@ -19,12 +19,26 @@ const MyListings = () => {
     console.log(products);
 
     // get user info:
+
+    /* 
+        use userEmail for now. Since texbooks werent made with this user they wont show up.
+        Not sure how to change the user attribute of products.
+        However, when user creates new post, then sorting by userID should work.
+    */
     const [email, setEmail] = useState("");
+    //const [userID, setUserID] = useState("");
     const { userInfo } = useSelector((state) => state.auth);
 
     useEffect(() => {
         setEmail(userInfo.email);
     }, [userInfo.email]);
+
+    /*
+    useEffect(() => {
+        //setEmail(userInfo.email);
+        setUserID(userInfo._id)
+    }, [userInfo._id]);
+    */
 
     // handlers
     const [deleteProduct, { isLoading: loadingDelete }] = useDeleteProductMutation();

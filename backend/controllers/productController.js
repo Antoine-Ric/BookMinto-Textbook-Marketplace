@@ -39,11 +39,13 @@ const createProduct = asyncHandler(async (req, res) => {
     price: 0,
     user: req.user._id,
     image: '/images/sample.jpg',
-    brand: 'Sample brand',
-    category: 'Sample category',
+    Author: "Sample Author",
+    Subject: "Sample Subject",
+    ISBN: "Sample ISBN",
     countInStock: 0,
     numReviews: 0,
     description: 'Sample description',
+    userEmail: req.user.email
   });
 
   const createdProduct = await product.save();
