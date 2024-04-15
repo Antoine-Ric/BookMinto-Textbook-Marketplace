@@ -1,9 +1,10 @@
 import { LinkContainer } from 'react-router-bootstrap';
 import { Table, Button, Row, Col } from 'react-bootstrap';
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import {  FaTrash } from 'react-icons/fa';
 import { useParams } from 'react-router-dom';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
+//import Paginate from '../../components/Paginate';
 import {
   useGetProductsQuery,
   useDeleteProductMutation,
@@ -15,9 +16,9 @@ import { toast } from 'react-toastify';
 const ProductListScreen = () => {
   const { pageNumber } = useParams();
 
-  const { data, isLoading, error, refetch } = useGetProductsQuery({
-    pageNumber,
-  });
+  const { data: products, isLoading, error, refetch } = useGetProductsQuery();
+
+  console.log(products);
 
   const [deleteProduct, { isLoading: loadingDelete }] =
     useDeleteProductMutation();
@@ -54,7 +55,9 @@ const ProductListScreen = () => {
           <h1>Products</h1>
         </Col>
         <Col className='text-end'>
-         
+          {/* <Button className='my-3' onClick={createProductHandler}>
+            <FaEdit /> Create Product
+          </Button> */}
         </Col>
       </Row>
 
@@ -72,43 +75,38 @@ const ProductListScreen = () => {
                 <th>ID</th>
                 <th>NAME</th>
                 <th>PRICE</th>
-                <th>CATEGORY</th>
-                <th>BRAND</th>
+                <th>SUBJECT</th>
+                <th>ISBN</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              {data && data.products && data.products.length > 0 ? (
-                data.products.map((product) => (
-                  <tr key={product._id}>
-                    <td>{product._id}</td>
-                    <td>{product.name}</td>
-                    <td>${product.price}</td>
-                    <td>{product.category}</td>
-                    <td>{product.brand}</td>
-                    <td>
-                      <LinkContainer to={`/admin/product/${product._id}/edit`}>
-                        <Button variant='light' className='btn-sm mx-2'>
-                          <FaEdit />
-                        </Button>
-                      </LinkContainer>
-                      <Button
-                        variant='danger'
-                        className='btn-sm'
-                        onClick={() => deleteHandler(product._id)}
-                      >
-                        <FaTrash style={{ color: 'white' }} />
+              {products.map((product) => (
+                <tr key={product._id}>
+                  <td>{product._id}</td>
+                  <td>{product.name}</td>
+                  <td>${product.price}</td>
+                  <td>{product.Subject}</td>
+                  <td>{product.ISBN}</td>
+                  <td>
+                    {/* <LinkContainer to={`/admin/product/${product._id}/edit`}>
+                      <Button variant='light' className='btn-sm mx-2'>
+                        <FaEdit />
                       </Button>
-                    </td>
-                  </tr>
-                ))
-              ) : (
-                <tr>
-                  <td colSpan="6">No products found.</td>
+                    </LinkContainer> */}
+                    <Button
+                      variant='danger'
+                      className='btn-sm'
+                      onClick={() => deleteHandler(product._id)}
+                    >
+                      <FaTrash style={{ color: 'white' }} />
+                    </Button>
+                  </td>
                 </tr>
-              )}
+              ))}
             </tbody>
           </Table>
+          {/* <Paginate pages={data.pages} page={data.page} isAdmin={true} />  */}
         </>
       )}
     </>
