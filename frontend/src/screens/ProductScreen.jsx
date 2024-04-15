@@ -10,32 +10,37 @@ import {
   Button,
   Modal,
 } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import Loader from "../components/Loader";
 import Rating from "../components/Rating";
 import Message from "../components/Message";
 import { useGetProductDetailsQuery } from "../slices/productsApiSlice";
-import { addToCart } from "../slices/favoriteSlice";
+import { addToCart, hideToCart} from "../slices/favoriteSlice";
 import Notification from "../components/Notification";
+import { toast } from "react-toastify"; // Import toast from react-toastify
+import "react-toastify/dist/ReactToastify.css"; // Import the CSS for toastify
+
+
 //import { FaTrash } from "react-icons/fa";
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
+
+  //const [addedToFavorites, setAddedToFavorites] = useState(false);
+
 
   const [notification, setNotification] = useState(null);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  //const selectedProduct = useSelector((state) => state.checkout.selectedProduct);
+
+  //const isItemInFavorites = useSelector((state) => state.favorite.isItemInFavorites) || false;
+
   const [qty, setQty] = useState(1);
 
-  const { cartItems } = useSelector((state) => state.cart);
-
-  const checkoutHandler = () => {
-    console.log('Proceeding to checkout...');
-    navigate('/login?redirect=/shipping');
-  };
-  
+  //const { cartItems } = useSelector((state) => state.cart);
 
 
   const {
@@ -44,9 +49,31 @@ const ProductScreen = () => {
     error,
   } = useGetProductDetailsQuery(productId);
 
+  const checkoutHandler = () => {
+    // Dispatch addToCart action without updating the state
+    dispatch(hideToCart({ ...product, qty, isHidden: true  }));
+    //dispatch(removeFromCart(product._id));
+
+
+    
+    // Now proceed to shipping
+    navigate("/shipping");
+  };
+
+
+
   const addToCartHandler = () => {
     dispatch(addToCart({ ...product, qty }));
     navigate("/favorites");
+    toast.success('This item has been added to favorites', {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   const [showOfferModal, setShowOfferModal] = useState(false);
@@ -62,6 +89,8 @@ const ProductScreen = () => {
     setNotification({message: 'Offer submitted successfully!', type: 'sucess'});
     handleCloseOfferModal();
   };
+
+ 
 
   return (
     <>
@@ -144,7 +173,8 @@ const ProductScreen = () => {
                     </Row>
                   </ListGroup.Item>
                 )}
-                <ListGroup.Item>
+                 {/* Add the Add to Favorites button here */}
+                 <ListGroup.Item>
                   <Button
                     className="btn-block"
                     type="button"
@@ -153,6 +183,7 @@ const ProductScreen = () => {
                     Add to Favorites
                   </Button>
                 </ListGroup.Item>
+                {/* End of Add to Favorites button */}
                 <ListGroup.Item>
                   <Button
                     className="btn-block"
@@ -167,8 +198,8 @@ const ProductScreen = () => {
                   <Button
                     className="btn-block"
                     type="button"
-                    disabled={cartItems.length === 0}
-                    onClick={checkoutHandler}
+                    disabled={product.countInStock === 0}
+                   onClick={checkoutHandler}
                   >
                     Proceed To Checkout
                   </Button>

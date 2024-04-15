@@ -10,7 +10,7 @@ const Product = ({ product }) => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const [isFavorited, setIsFavorited] = useState(false);
-  const [qty ] = useState(1);
+  const [qty] = useState(1);
 
   useEffect(() => {
     // Check if the product is already in the cart (favorites)
@@ -67,3 +67,4 @@ const Product = ({ product }) => {
 };
 
 export default Product;
+

@@ -8,6 +8,7 @@ const getProducts = asyncHandler(async (req, res) => {
 
   // match by item name
   // match by isbn number - must implement later
+
   const keyword = req.query.keyword ? {
     $or: [
         { name: { $regex: req.query.keyword, $options: 'i' } },
@@ -15,7 +16,7 @@ const getProducts = asyncHandler(async (req, res) => {
     ]
   } : {}
 
-  const products = await Product.find({...keyword});
+  const products = await Product.find({});
   res.json(products);
 });
 
@@ -79,6 +80,7 @@ const updateProduct = asyncHandler(async (req, res) => {
   }
 });
 
+
 // @desc    Delete a product
 // @route   DELETE /api/products/:id
 // @access  Private/Admin
@@ -87,7 +89,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
   if (product) {
     await Product.deleteOne({ _id: product._id });
-    res.json({ message: 'Product removed' });
+    res.status(200).json({ message: 'Product deleted' });
   } else {
     res.status(404);
     throw new Error('Product not found');

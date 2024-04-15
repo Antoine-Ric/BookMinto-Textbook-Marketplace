@@ -18,7 +18,7 @@ const products = [
     description:
       "A foundational text in economics, providing an accessible introduction to both microeconomic and macroeconomic principles.",
     Author: " N. Gregory Mankiw",
-    Subject: "Business",
+    Subject: "Economics",
     ISBN: "978-1305585126",
     price: 9.99,
     countInStock: 7,
@@ -46,7 +46,7 @@ const products = [
     description:
       "The ultimate home entertainment center starts with PlayStation. Whether you are into gaming, HD movies, television, music",
     Author: "",
-    Subject: "Science",
+    Subject: "",
     ISBN: "978-1118885806",
     price: 9.99,
     countInStock: 11,
@@ -60,7 +60,7 @@ const products = [
     description:
       "Get a better handle on your games with this Logitech LIGHTSYNC gaming mouse. The six programmable buttons allow customization for a smooth playing experience",
     Author: "",
-    Subject: "Science",
+    Subject: "",
     ISBN: "978-1319050627",
     price: 9.99,
     countInStock: 7,
@@ -74,7 +74,7 @@ const products = [
     description:
       "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
     Author: "",
-    Subject: "Science",
+    Subject: "",
     ISBN: "978-0134048147",
     price: 9.99,
     countInStock: 0,
@@ -88,7 +88,7 @@ const products = [
     description:
         "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
     Author: "",
-    Subject: "Science",
+    Subject: "",
     ISBN: "978-0134605180",
     price: 9.99,
     countInStock: 0,
@@ -102,7 +102,7 @@ const products = [
     description:
         "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
     Author: "",
-    Subject: "Business",
+    Subject: "",
     ISBN: "978-0137144641",
     price: 9.99,
     countInStock: 0,
@@ -116,7 +116,7 @@ const products = [
     description:
         "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
     Author: "",
-    Subject: "Social Science",
+    Subject: "",
     ISBN: "978-0134205588",
     price: 9.99,
     countInStock: 0,
@@ -130,7 +130,7 @@ const products = [
     description:
         "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
     Author: "",
-    Subject: "Business",
+    Subject: "",
     ISBN: "978-1118875050",
     price: 9.99,
     countInStock: 0,
@@ -144,7 +144,7 @@ const products = [
     description:
         "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
     Author: "",
-    Subject: "Business",
+    Subject: "",
     ISBN: "978-1337902601",
     price: 9.99,
     countInStock: 0,
@@ -158,7 +158,7 @@ const products = [
     description:
         "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
     Author: "",
-    Subject: "Technology",
+    Subject: "",
     ISBN: "978-0262033848",
     price: 9.99,
     countInStock: 0,
@@ -172,7 +172,7 @@ const products = [
     description:
         "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
     Author: "",
-    Subject: "Science",
+    Subject: "",
     ISBN: "978-0134580999",
     price: 9.99,
     countInStock: 0,
@@ -186,7 +186,7 @@ const products = [
     description:
         "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
     Author: "",
-    Subject: "Science",
+    Subject: "",
     ISBN: "978-0357028929",
     price: 9.99,
     countInStock: 0,
@@ -200,7 +200,7 @@ const products = [
     description:
         "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
     Author: "",
-    Subject: "Business",
+    Subject: "",
     ISBN: "978-1119503669",
     price: 9.99,
     countInStock: 0,
