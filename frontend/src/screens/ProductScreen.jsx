@@ -10,14 +10,13 @@ import {
   Button,
   Modal,
 } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import Loader from "../components/Loader";
 import Rating from "../components/Rating";
 import Message from "../components/Message";
 import { useGetProductDetailsQuery } from "../slices/productsApiSlice";
-import { addToCart } from "../slices/favoriteSlice";
+import { addToCart, hideToCart} from "../slices/favoriteSlice";
 import Notification from "../components/Notification";
-import { setSelectedProduct } from "../slices/checkoutSlice";
 import { toast } from "react-toastify"; // Import toast from react-toastify
 import "react-toastify/dist/ReactToastify.css"; // Import the CSS for toastify
 
@@ -27,25 +26,21 @@ import "react-toastify/dist/ReactToastify.css"; // Import the CSS for toastify
 const ProductScreen = () => {
   const { id: productId } = useParams();
 
+  //const [addedToFavorites, setAddedToFavorites] = useState(false);
+
+
   const [notification, setNotification] = useState(null);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const selectedProduct = useSelector((state) => state.checkout.selectedProduct);
+  //const selectedProduct = useSelector((state) => state.checkout.selectedProduct);
 
   //const isItemInFavorites = useSelector((state) => state.favorite.isItemInFavorites) || false;
 
   const [qty, setQty] = useState(1);
 
   //const { cartItems } = useSelector((state) => state.cart);
-
-  const checkoutHandler = () => {
-    console.log("Proceeding to checkout...");
-    dispatch(setSelectedProduct(product)); // Dispatch the selected product to Redux
-    navigate("/shipping");
-  };
-  
 
 
   const {
@@ -54,10 +49,22 @@ const ProductScreen = () => {
     error,
   } = useGetProductDetailsQuery(productId);
 
+  const checkoutHandler = () => {
+    // Dispatch addToCart action without updating the state
+    dispatch(hideToCart({ ...product, qty, isHidden: true  }));
+    //dispatch(removeFromCart(product._id));
+
+
+    
+    // Now proceed to shipping
+    navigate("/shipping");
+  };
+
+
 
   const addToCartHandler = () => {
     dispatch(addToCart({ ...product, qty }));
-    // navigate("/favorites");
+    navigate("/favorites");
     toast.success('This item has been added to favorites', {
       position: "bottom-right",
       autoClose: 5000,
@@ -192,7 +199,7 @@ const ProductScreen = () => {
                     className="btn-block"
                     type="button"
                     disabled={product.countInStock === 0}
-                    onClick={checkoutHandler}
+                   onClick={checkoutHandler}
                   >
                     Proceed To Checkout
                   </Button>

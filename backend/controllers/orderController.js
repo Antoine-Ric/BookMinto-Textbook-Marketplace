@@ -1,43 +1,58 @@
 import asyncHandler from '../middleware/asyncHandler.js';
 import Order from '../models/orderModel.js';
+import Product from '../models/productModel.js';
+import { calcPrices } from '../utils/calcPrices.js';
+//import { verifyPayPalPayment, checkIfNewTransaction } from '../utils/paypal.js';
 //import Product from '../models/productModel.js';
 
 // @desc    Create new order
 // @route   POST /api/orders
 // @access  Private
 const addOrderItems = asyncHandler(async (req, res) => {
-  const { selectedProduct, shippingAddress, paymentMethod, itemsPrice, taxPrice, shippingPrice, totalPrice } = req.body;
+  const { orderItems, shippingAddress, paymentMethod } = req.body;
 
-  if (!selectedProduct) {
+  if (orderItems && orderItems.length === 0) {
     res.status(400);
-    throw new Error('Selected product is required');
+    throw new Error('No order items');
+  } else {
+    // get the ordered items from our database
+    const itemsFromDB = await Product.find({
+      _id: { $in: orderItems.map((x) => x._id) },
+    });
+
+    // map over the order items and use the price from our items from database
+    const dbOrderItems = orderItems.map((itemFromClient) => {
+      const matchingItemFromDB = itemsFromDB.find(
+        (itemFromDB) => itemFromDB._id.toString() === itemFromClient._id
+      );
+      return {
+        ...itemFromClient,
+        product: itemFromClient._id,
+        price: matchingItemFromDB.price,
+        _id: undefined,
+      };
+    });
+
+    // calculate prices
+    const { itemsPrice, taxPrice, shippingPrice, totalPrice } =
+      calcPrices(dbOrderItems);
+
+    const order = new Order({
+      orderItems: dbOrderItems,
+      user: req.user._id,
+      shippingAddress,
+      paymentMethod,
+      itemsPrice,
+      taxPrice,
+      shippingPrice,
+      totalPrice,
+    });
+
+    const createdOrder = await order.save();
+
+    res.status(201).json(createdOrder);
   }
-
-  const orderItem = {
-    product: selectedProduct._id, // Assuming selectedProduct is an object with an _id property
-    name: selectedProduct.name,
-    image: selectedProduct.image,
-    price: selectedProduct.price,
-    qty: selectedProduct.qty, // Assuming qty is provided in selectedProduct
-  };
-
-  const order = new Order({
-    orderItems: [orderItem],
-    user: req.user._id,
-    shippingAddress,
-    paymentMethod,
-    itemsPrice,
-    taxPrice,
-    shippingPrice,
-    totalPrice,
-  });
-
-  const createdOrder = await order.save();
-
-  res.status(201).json(createdOrder);
 });
-
-
 // @desc    Get logged in user orders
 // @route   GET /api/orders/myorders
 // @access  Private
@@ -67,37 +82,35 @@ const getOrderById = asyncHandler(async (req, res) => {
 // @route   PUT /api/orders/:id/pay
 // @access  Private
 const updateOrderToPaid = asyncHandler(async (req, res) => {
-  try {
-    const order = await Order.findById(req.params.id);
+  const { verified, value } = await verifyPayPalPayment(req.body.id);
+  if (!verified) throw new Error('Payment not verified');
 
-    if (order) {
-      // Check the correct amount was paid
-      const paidCorrectAmount = order.totalPrice.toString() === req.body.amount;
-      if (!paidCorrectAmount) {
-        console.error('Incorrect amount paid');
-        throw new Error('Incorrect amount paid');
-      }
+  // check if this transaction has been used before
+  const isNewTransaction = await checkIfNewTransaction(Order, req.body.id);
+  if (!isNewTransaction) throw new Error('Transaction has been used before');
 
-      order.isPaid = true;
-      order.paidAt = Date.now();
-      order.paymentResult = {
-        id: req.body.id,
-        status: req.body.status,
-        update_time: req.body.update_time,
-        email_address: req.body.payer.email_address,
-      };
+  const order = await Order.findById(req.params.id);
 
-      const updatedOrder = await order.save();
+  if (order) {
+    // check the correct amount was paid
+    const paidCorrectAmount = order.totalPrice.toString() === value;
+    if (!paidCorrectAmount) throw new Error('Incorrect amount paid');
 
-      res.status(200).json(updatedOrder);
-    } else {
-      console.error('Order not found');
-      res.status(404);
-      throw new Error('Order not found');
-    }
-  } catch (error) {
-    console.error('Error updating order to paid:', error);
-    res.status(500).json({ message: 'Internal Server Error' });
+    order.isPaid = true;
+    order.paidAt = Date.now();
+    order.paymentResult = {
+      id: req.body.id,
+      status: req.body.status,
+      update_time: req.body.update_time,
+      email_address: req.body.payer.email_address,
+    };
+
+    const updatedOrder = await order.save();
+
+    res.json(updatedOrder);
+  } else {
+    res.status(404);
+    throw new Error('Order not found');
   }
 });
 

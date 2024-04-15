@@ -8,14 +8,19 @@ import { useLogoutMutation } from "../slices/usersApiSlice";
 import { logout } from "../slices/authSlice";
 import logo from "../assets/mintlogosmall.png";
 import { selectFavoritesCount } from '../slices/favoriteSlice'; // Correctly import the selector
+import { removeHiddenFromCart } from '../slices/favoriteSlice'; // Import the action creator
 
 
 const Header = () => {
-  const { cartItems } = useSelector((state) => state.cart);
+  //const { cartItems } = useSelector((state) => state.cart);
 
   const favoritesCount = useSelector(selectFavoritesCount); // Get favorites count from Redux store
 
   const { userInfo } = useSelector((state) => state.auth);
+
+  const handleLogoClick = () => {
+    dispatch(removeHiddenFromCart()); // Call the action creator on logo click
+  };
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -36,8 +41,8 @@ const Header = () => {
       <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect>
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand>
-              <img src={logo} alt="ProShop" />
+            <Navbar.Brand onClick={handleLogoClick}> {/* Attach onClick handler to the logo */}
+              <img src={logo} alt="BookMinto" />
               BookMinto
             </Navbar.Brand>
           </LinkContainer>
@@ -65,21 +70,32 @@ const Header = () => {
                   </LinkContainer>
                   <NavDropdown.Item onClick={logoutHandler}>
                     Logout
-                  </NavDropdown.Item>
-                </NavDropdown>
-              ) : (
-                <LinkContainer to="/login">
-                  <Nav.Link href="/login">
-                    <FaUser /> Sign In
-                  </Nav.Link>
-                </LinkContainer>
-              )}
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    </header>
-  );
-};
+                    </NavDropdown.Item>
+                            </NavDropdown>
+                        ) : (<LinkContainer to='/login'>
+                            <Nav.Link>
+                            <FaUser /> Sign In
+                            </Nav.Link>
+                        </LinkContainer>) } 
+                       {userInfo && userInfo.isAdmin && (
+                          <NavDropdown title='Admin' id='adminmenu'>
+                          <LinkContainer to='/admin/productlist'>
+                            <NavDropdown.Item>Products</NavDropdown.Item>
+                          </LinkContainer>
+                          <LinkContainer to='/admin/orderlist'>
+                            <NavDropdown.Item>Orders</NavDropdown.Item>
+                          </LinkContainer>
+                          <LinkContainer to='/admin/userlist'>
+                            <NavDropdown.Item>Users</NavDropdown.Item>
+                          </LinkContainer>
+                        </NavDropdown>
+                        )}
+                    </Nav> 
+                </Navbar.Collapse>
+                </Container>  
+            </Navbar>
+        </header>
+    )
+}
 
 export default Header;
