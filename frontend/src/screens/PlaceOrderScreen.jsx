@@ -37,10 +37,15 @@ const PlaceOrderScreen = () => {
         taxPrice: cart.taxPrice,
         totalPrice: cart.totalPrice,
       }).unwrap();
-      dispatch(clearCartItems());
-      navigate(`/order/${res._id}`);
+  
+      if (res && res._id) {
+        dispatch(clearCartItems());
+        navigate(`/order/${res._id}`);
+      } else {
+        throw new Error('Invalid response from server'); // Throw an error if the response is invalid
+      }
     } catch (err) {
-      toast.error(err);
+      toast.error(err.message);
     }
   };
 
