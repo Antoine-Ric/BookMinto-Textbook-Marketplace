@@ -33,6 +33,12 @@ const ProfileHeader = ({ isSidebarOpen, toggleSidebar }) => {
             <Nav.Link>My Orders</Nav.Link>
           </LinkContainer>
       </Nav.Item>
+
+      <Nav.Item>
+          <LinkContainer to='/mylistings'>
+            <Nav.Link>My Listings</Nav.Link>
+          </LinkContainer>
+      </Nav.Item>
     </Nav>
     </div>
   );

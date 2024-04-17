@@ -1,4 +1,3 @@
-
 const products = [
   {
     name: "Campbell Biology",
@@ -11,6 +10,7 @@ const products = [
     countInStock: 1,
     rating: 3,
     numReviews: 5,
+    userEmail: "john@email.com",
   },
   {
     name: "Principles of Economics",
@@ -24,6 +24,7 @@ const products = [
     countInStock: 7,
     rating: 4.0,
     numReviews: 8,
+    userEmail: "john@email.com",
   },
   {
     name: "Chemistry: The Central Science",
@@ -37,6 +38,7 @@ const products = [
     countInStock: 5,
     rating: 3,
     numReviews: 12,
+    userEmail: "john@email.com",
   },
   {
     name: "Fundamentals of Physics",
@@ -50,6 +52,7 @@ const products = [
     countInStock: 11,
     rating: 5,
     numReviews: 12,
+    userEmail: "john@email.com",
   },
   {
     name: "Psychology",
@@ -63,6 +66,7 @@ const products = [
     countInStock: 7,
     rating: 3.5,
     numReviews: 10,
+    userEmail: "john@email.com",
   },
   {
     name: "Organic Chemistry",
@@ -76,6 +80,7 @@ const products = [
     countInStock: 0,
     rating: 4,
     numReviews: 12,
+    userEmail: "john@email.com",
   },
   {
     name: "Microbiology: An Introduction",
@@ -89,6 +94,7 @@ const products = [
     countInStock: 0,
     rating: 4,
     numReviews: 12,
+    userEmail: "john@email.com",
   },
   {
     name: "Principles of Marketing",
@@ -102,6 +108,7 @@ const products = [
     countInStock: 0,
     rating: 4,
     numReviews: 12,
+    userEmail: "john@email.com",
   },
   {
     name: "Essentials of Sociology",
@@ -115,6 +122,7 @@ const products = [
     countInStock: 0,
     rating: 4,
     numReviews: 12,
+    userEmail: "jane@email.com",
   },
   {
     name: "Accounting Principles",
@@ -128,6 +136,7 @@ const products = [
     countInStock: 0,
     rating: 4,
     numReviews: 12,
+    userEmail: "jane@email.com",
   },
   {
     name: "Fundamentals of Financial Management",
@@ -141,6 +150,7 @@ const products = [
     countInStock: 0,
     rating: 4,
     numReviews: 12,
+    userEmail: "jane@email.com",
   },
   {
     name: "Introduction to Algorithms",
@@ -154,6 +164,7 @@ const products = [
     countInStock: 0,
     rating: 4,
     numReviews: 12,
+    userEmail: "jane@email.com",
   },
   {
     name: "Human Anatomy & Physiology",
@@ -167,6 +178,7 @@ const products = [
     countInStock: 0,
     rating: 4,
     numReviews: 12,
+    userEmail: "jane@email.com",
   },
   {
     name: "Understanding Nutrition",
@@ -180,6 +192,7 @@ const products = [
     countInStock: 0,
     rating: 4,
     numReviews: 12,
+    userEmail: "jane@email.com",
   },
   {
     name: "Intermediate Accounting",
@@ -193,6 +206,7 @@ const products = [
     countInStock: 0,
     rating: 4,
     numReviews: 12,
+    userEmail: "jane@email.com",
   },
   {
     name: "Operations Management",
@@ -206,8 +220,8 @@ const products = [
     countInStock: 0,
     rating: 4,
     numReviews: 12,
+    userEmail: "jane@email.com",
   },
 ];
-
 
 export default products;
