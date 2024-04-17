@@ -73,7 +73,9 @@ const ProductListScreen = () => {
             <thead>
               <tr>
                 <th>ID</th>
+                <th>USER EMAIL</th>
                 <th>NAME</th>
+                <th>AUTHOR</th>
                 <th>PRICE</th>
                 <th>SUBJECT</th>
                 <th>ISBN</th>
@@ -84,7 +86,9 @@ const ProductListScreen = () => {
               {products.map((product) => (
                 <tr key={product._id}>
                   <td>{product._id}</td>
+                  <th>{product.userEmail}</th>
                   <td>{product.name}</td>
+                  <td>{product.Author}</td>
                   <td>${product.price}</td>
                   <td>{product.Subject}</td>
                   <td>{product.ISBN}</td>
