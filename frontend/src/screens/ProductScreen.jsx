@@ -108,6 +108,12 @@ const ProductScreen = () => {
               </ListGroup.Item>
               <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
               <ListGroup.Item>
+                Author: {product.Author}{" "}
+              </ListGroup.Item>
+              <ListGroup.Item>
+                ISBN: {product.ISBN}{" "}
+              </ListGroup.Item>
+              <ListGroup.Item>
                 Description: {product.description}{" "}
               </ListGroup.Item>
             </ListGroup>
