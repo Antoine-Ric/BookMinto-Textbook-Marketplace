@@ -1,10 +1,8 @@
-import { LinkContainer } from 'react-router-bootstrap';
 import { Table, Button, Row, Col } from 'react-bootstrap';
 import {  FaTrash } from 'react-icons/fa';
-import { useParams } from 'react-router-dom';
 import Message from '../../components/Message';
 import Loader from '../../components/Loader';
-//import Paginate from '../../components/Paginate';
+
 import {
   useGetProductsQuery,
   useDeleteProductMutation,
@@ -14,8 +12,6 @@ import { toast } from 'react-toastify';
 
 
 const ProductListScreen = () => {
-  const { pageNumber } = useParams();
-
   const { data: products, isLoading, error, refetch } = useGetProductsQuery();
 
   console.log(products);
@@ -34,30 +30,14 @@ const ProductListScreen = () => {
     }
   };
 
-  const [createProduct, { isLoading: loadingCreate }] =
+  const [{ isLoading: loadingCreate }] =
     useCreateProductMutation();
-
-  // const createProductHandler = async () => {
-  //   if (window.confirm('Are you sure you want to create a new product?')) {
-  //     try {
-  //       await createProduct();
-  //       refetch();
-  //     } catch (err) {
-  //       toast.error(err?.data?.message || err.error);
-  //     }
-  //   }
-  // };
 
   return (
     <>
       <Row className='align-items-center'>
         <Col>
           <h1>Products</h1>
-        </Col>
-        <Col className='text-end'>
-          {/* <Button className='my-3' onClick={createProductHandler}>
-            <FaEdit /> Create Product
-          </Button> */}
         </Col>
       </Row>
 
@@ -93,11 +73,6 @@ const ProductListScreen = () => {
                   <td>{product.Subject}</td>
                   <td>{product.ISBN}</td>
                   <td>
-                    {/* <LinkContainer to={`/admin/product/${product._id}/edit`}>
-                      <Button variant='light' className='btn-sm mx-2'>
-                        <FaEdit />
-                      </Button>
-                    </LinkContainer> */}
                     <Button
                       variant='danger'
                       className='btn-sm'
@@ -110,7 +85,6 @@ const ProductListScreen = () => {
               ))}
             </tbody>
           </Table>
-          {/* <Paginate pages={data.pages} page={data.page} isAdmin={true} />  */}
         </>
       )}
     </>

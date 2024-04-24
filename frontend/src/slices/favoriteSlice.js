@@ -58,19 +58,16 @@ const favoriteSlice = createSlice({
     saveShippingAddress: (state, action) => {
       state.shippingAddress = action.payload;
       return updateCart(state);
-      //localStorage.setItem('cart', JSON.stringify(state));
     },
     savePaymentMethod: (state, action) => {
       state.paymentMethod = action.payload;
       return updateCart(state);
-      //localStorage.setItem('cart', JSON.stringify(state));
     },
     clearCartItems: (state, action) => {
       state.cartItems = [];
       return updateCart(state);
     },
     
-    //resetCart: (state) => (state = initialState),
 },
 });
 

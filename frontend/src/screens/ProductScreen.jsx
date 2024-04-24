@@ -20,28 +20,13 @@ import Notification from "../components/Notification";
 import { toast } from "react-toastify"; // Import toast from react-toastify
 import "react-toastify/dist/ReactToastify.css"; // Import the CSS for toastify
 
-
-//import { FaTrash } from "react-icons/fa";
-
 const ProductScreen = () => {
   const { id: productId } = useParams();
-
-  //const [addedToFavorites, setAddedToFavorites] = useState(false);
-
-
   const [notification, setNotification] = useState(null);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  //const selectedProduct = useSelector((state) => state.checkout.selectedProduct);
-
-  //const isItemInFavorites = useSelector((state) => state.favorite.isItemInFavorites) || false;
-
   const [qty, setQty] = useState(1);
-
-  //const { cartItems } = useSelector((state) => state.cart);
-
 
   const {
     data: product,
@@ -52,11 +37,7 @@ const ProductScreen = () => {
   const checkoutHandler = () => {
     // Dispatch addToCart action without updating the state
     dispatch(hideToCart({ ...product, qty, isHidden: true  }));
-    //dispatch(removeFromCart(product._id));
 
-
-    
-    // Now proceed to shipping
     navigate("/shipping");
   };
 
@@ -128,7 +109,6 @@ const ProductScreen = () => {
               <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
               <ListGroup.Item>
                 Description: {product.description}{" "}
-                {/* Removed the $ sign before description */}
               </ListGroup.Item>
             </ListGroup>
           </Col>
@@ -173,7 +153,7 @@ const ProductScreen = () => {
                     </Row>
                   </ListGroup.Item>
                 )}
-                 {/* Add the Add to Favorites button here */}
+                 {/* Add to Favorites button here */}
                  <ListGroup.Item>
                   <Button
                     className="btn-block"

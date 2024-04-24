@@ -33,23 +33,15 @@ const productSchema = new mongoose.Schema(
     },
     Author: {
       type: String,
-      //required: true, // uncomment this later
+      required: true,
     },
     image: {
       type: String,
       required: true,
     },
-    brand: {
-      type: String,
-      required: false,
-    },
     Subject: {
       type: String,
       reqired: true,
-    },
-    category: {
-      type: String,
-      required: false,
     },
     description: {
       type: String,
