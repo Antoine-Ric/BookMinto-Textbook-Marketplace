@@ -82,7 +82,27 @@ const getOrderById = asyncHandler(async (req, res) => {
 // @route   PUT /api/orders/:id/pay
 // @access  Private
 const updateOrderToPaid = asyncHandler(async (req, res) => {
-  const { verified, value } = await verifyPayPalPayment(req.body.id);
+  const order = await Order.findById(req.params.id);
+
+    if (order) {
+
+        order.isPaid = true;
+        order.paidAt = Date.now();
+        order.paymentResult = {
+        id: req.body.id,
+        status: req.body.status,
+        update_time: req.body.update_time,
+        email_address: req.body.payer.email_address,
+        };
+
+        const updatedOrder = await order.save();
+
+        res.json(updatedOrder);
+    } else {
+        res.status(404);
+        throw new Error('Order not found');
+    }
+  /*const { verified, value } = await verifyPayPalPayment(req.body.id);
   if (!verified) throw new Error('Payment not verified');
 
   // check if this transaction has been used before
@@ -111,7 +131,7 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
   } else {
     res.status(404);
     throw new Error('Order not found');
-  }
+  }*/
 });
 
 
