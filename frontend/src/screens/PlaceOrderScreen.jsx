@@ -7,8 +7,8 @@ import Message from '../components/Message';
 import CheckoutSteps from '../components/CheckoutSteps';
 import Loader from '../components/Loader';
 import { useCreateOrderMutation } from '../slices/ordersApiSlice';
-import { clearCartItems } from '../slices/favoriteSlice';
-import { selectHiddenItemsCount } from '../slices/favoriteSlice';
+import { selectHiddenItemsCount, clearCartItems, removeFromCart} from '../slices/favoriteSlice';
+import { addDecimals } from '../utils/favoriteUtils';
 
 const PlaceOrderScreen = () => {
   const navigate = useNavigate();
@@ -26,20 +26,25 @@ const PlaceOrderScreen = () => {
     }
   }, [cart.paymentMethod, cart.shippingAddress.address, navigate, dispatch, location.pathname]);
 
+  const hiddenItemsPrice = addDecimals(cart.cartItems.filter((item) => item.isHidden).reduce((acc, item) => acc + (item.isHidden ? item.price * item.qty : 0), 0));
+  const hiddenShippingPrice = addDecimals(hiddenItemsPrice > 100 ? 0 : 10)
+  const hiddenTaxPrice = addDecimals(Number((0.15 * hiddenItemsPrice).toFixed(2)))
+  const hiddenTotalPrice = (Number(hiddenItemsPrice) + Number(hiddenShippingPrice) + Number(hiddenTaxPrice)).toFixed(2);
+
   const placeOrderHandler = async () => {
     try {
       const res = await createOrder({
-        orderItems: cart.cartItems,
+        orderItems: cart.cartItems.filter(item => item.isHidden === true),
         shippingAddress: cart.shippingAddress,
         paymentMethod: cart.paymentMethod,
-        itemsPrice: cart.itemsPrice,
-        shippingPrice: cart.shippingPrice,
-        taxPrice: cart.taxPrice,
-        totalPrice: cart.totalPrice,
+        itemsPrice: hiddenItemsPrice,
+        shippingPrice: hiddenShippingPrice,
+        taxPrice: hiddenTaxPrice,
+        totalPrice: hiddenTotalPrice,
       }).unwrap();
-  
+
       if (res && res._id) {
-        dispatch(clearCartItems());
+        dispatch(removeFromCart(cart.cartItems.filter((item) => item.isHidden)[0]._id));
         navigate(`/order/${res._id}`);
       } else {
         throw new Error('Invalid response from server'); // Throw an error if the response is invalid
@@ -105,25 +110,25 @@ const PlaceOrderScreen = () => {
               <ListGroup.Item>
                 <Row>
                   <Col>Items</Col>
-                  <Col>${cart.itemsPrice}</Col>
+                  <Col>${hiddenItemsPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Shipping</Col>
-                  <Col>${cart.shippingPrice}</Col>
+                  <Col>${hiddenShippingPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Tax</Col>
-                  <Col>${cart.taxPrice}</Col>
+                  <Col>${hiddenTaxPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
                   <Col>Total:</Col>
-                  <Col>${cart.totalPrice}</Col>
+                  <Col>${hiddenTotalPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
