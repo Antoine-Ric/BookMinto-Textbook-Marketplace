@@ -22,62 +22,16 @@ const HomeScreen = () => {
         <>
           <SearchBox />
           <h1>Latest Products</h1>
-          <Row>
-            <h2>Science</h2>
-              {products.filter((product) => product.Subject === subjects[0]).map((product, index) => (
-                <Col key={index} sm={12} md={6} lg={4} xl={3}>
-                  <Product product={product} />
-                </Col>
-              ))}
-          </Row>
-          <Row>
-            <h2>Technology</h2>
-              {products.filter((product) => product.Subject === subjects[1]).map((product, index) => (
-                <Col key={index} sm={12} md={6} lg={4} xl={3}>
-                  <Product product={product} />
-                </Col>
-              ))}
-          </Row>
-          <Row>
-            <h2>Math</h2>
-              {products.filter((product) => product.Subject === subjects[2]).map((product, index) => (
-                <Col key={index} sm={12} md={6} lg={4} xl={3}>
-                  <Product product={product} />
-                </Col>
-              ))}
-          </Row>
-          <Row>
-            <h2>Engineering</h2>
-            {products.filter((product) => product.Subject === subjects[3]).map((product, index) => (
-                <Col key={index} sm={12} md={6} lg={4} xl={3}>
-                  <Product product={product} />
-                </Col>
-              ))}
-          </Row>
-          <Row>
-            <h2>Social Science</h2>
-            {products.filter((product) => product.Subject === subjects[4]).map((product, index) => (
-                <Col key={index} sm={12} md={6} lg={4} xl={3}>
-                  <Product product={product} />
-                </Col>
-              ))}
-          </Row>
-          <Row>
-            <h2>Business</h2>
-            {products.filter((product) => product.Subject === subjects[5]).map((product, index) => (
-                <Col key={index} sm={12} md={6} lg={4} xl={3}>
-                  <Product product={product} />
-                </Col>
-              ))}
-          </Row>
-          <Row>
-            <h2>Other</h2>
-            {products.filter((product) => product.Subject === subjects[6]).map((product, index) => (
-                <Col key={index} sm={12} md={6} lg={4} xl={3}>
-                  <Product product={product} />
-                </Col>
-              ))}
-          </Row>
+            {subjects.map((item, index) => (
+              <Row>
+                <h2>{item}</h2>
+                {products.filter(product => product.Subject === item).map((product, index) => (
+                  <Col key={index} sm={12} md={6} lg={4} xl={3}>
+                    <Product product={product} />
+                  </Col>
+                ))}
+              </Row>
+            ))}
         </>
       )}
     </>
