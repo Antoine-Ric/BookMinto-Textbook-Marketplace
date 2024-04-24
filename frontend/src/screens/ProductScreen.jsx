@@ -19,7 +19,7 @@ import { addToCart, hideToCart} from "../slices/favoriteSlice";
 import Notification from "../components/Notification";
 import { toast } from "react-toastify"; // Import toast from react-toastify
 import "react-toastify/dist/ReactToastify.css"; // Import the CSS for toastify
-import { useSelector } from "react-redux";
+
 import { useGetUsersQuery } from "../slices/usersApiSlice";
 
 const ProductScreen = () => {
