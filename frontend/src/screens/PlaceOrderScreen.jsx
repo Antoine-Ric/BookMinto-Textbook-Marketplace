@@ -42,10 +42,15 @@ const PlaceOrderScreen = () => {
         taxPrice: hiddenTaxPrice,
         totalPrice: hiddenTotalPrice,
       }).unwrap();
-      dispatch(removeFromCart(cart.cartItems.filter((item) => item.isHidden)[0]._id));
-      navigate(`/order/${res._id}`);
+
+      if (res && res._id) {
+        dispatch(removeFromCart(cart.cartItems.filter((item) => item.isHidden)[0]._id));
+        navigate(`/order/${res._id}`);
+      } else {
+        throw new Error('Invalid response from server'); // Throw an error if the response is invalid
+      }
     } catch (err) {
-      toast.error(err);
+      toast.error(err.message);
     }
   };
 

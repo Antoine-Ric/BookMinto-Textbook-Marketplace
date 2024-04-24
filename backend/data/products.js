@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 const products = [
   {
     name: "Campbell Biology",
@@ -11,217 +10,7 @@ const products = [
     countInStock: 1,
     rating: 3,
     numReviews: 5,
-  },
-  {
-    name: "Principles of Economics",
-    image: "/images/Principles-Economics.jpg",
-    description:
-      "A foundational text in economics, providing an accessible introduction to both microeconomic and macroeconomic principles.",
-    Author: " N. Gregory Mankiw",
-    Subject: "Business",
-    ISBN: "978-1305585126",
-    price: 9.99,
-    countInStock: 7,
-    rating: 4.0,
-    numReviews: 8,
-  },
-  {
-    name: "Chemistry: The Central Science",
-    image: "/images/Chemistry.jpg",
-    description:
-      "Characterized by versatile imaging specs, the Canon EOS 80D further clarifies itself using a pair of robust focusing systems and an intuitive design",
-    Author: "",
-    Subject: "Science",
-    ISBN: "978-0134414232",
-    price: 9.99,
-    countInStock: 5,
-    rating: 3,
-    numReviews: 12,
-  },
-  {
-    name: "Fundamentals of Physics",
-    image: "/images/Fundamental-Physics.jpg",
-    description:
-      "The ultimate home entertainment center starts with PlayStation. Whether you are into gaming, HD movies, television, music",
-    Author: "",
-    Subject: "Science",
-    ISBN: "978-1118885806",
-    price: 9.99,
-    countInStock: 11,
-    rating: 5,
-    numReviews: 12,
-  },
-  {
-    name: "Psychology",
-    image: "/images/Psychology.jpg",
-    description:
-      "Get a better handle on your games with this Logitech LIGHTSYNC gaming mouse. The six programmable buttons allow customization for a smooth playing experience",
-    Author: "",
-    Subject: "Science",
-    ISBN: "978-1319050627",
-    price: 9.99,
-    countInStock: 7,
-    rating: 3.5,
-    numReviews: 10,
-  },
-  {
-    name: "Organic Chemistry",
-    image: "/images/Organic-Chemistry.jpg",
-    description:
-      "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
-    Author: "",
-    Subject: "Science",
-    ISBN: "978-0134048147",
-    price: 9.99,
-    countInStock: 0,
-    rating: 4,
-    numReviews: 12,
-  },
-  {
-    name: "Microbiology: An Introduction",
-    image: "/images/Microbiology.jpg",
-    description:
-        "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
-    Author: "",
-    Subject: "Science",
-    ISBN: "978-0134605180",
-    price: 9.99,
-    countInStock: 0,
-    rating: 4,
-    numReviews: 12,
-  },
-  {
-    name: "Principles of Marketing",
-    image: "/images/Marketing.jpg",
-    description:
-        "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
-    Author: "",
-    Subject: "Business",
-    ISBN: "978-0137144641",
-    price: 9.99,
-    countInStock: 0,
-    rating: 4,
-    numReviews: 12,
-  },
-  {
-    name: "Essentials of Sociology",
-    image: "/images/Sociology.jpg",
-    description:
-        "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
-    Author: "",
-    Subject: "Social Science",
-    ISBN: "978-0134205588",
-    price: 9.99,
-    countInStock: 0,
-    rating: 4,
-    numReviews: 12,
-  },
-  {
-    name: "Accounting Principles",
-    image: "/images/Accounting-Principles.jpg",
-    description:
-        "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
-    Author: "",
-    Subject: "Business",
-    ISBN: "978-1118875050",
-    price: 9.99,
-    countInStock: 0,
-    rating: 4,
-    numReviews: 12,
-  },
-  {
-    name: "Fundamentals of Financial Management",
-    image: "/images/Financial-Management.jpg",
-    description:
-        "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
-    Author: "",
-    Subject: "Business",
-    ISBN: "978-1337902601",
-    price: 9.99,
-    countInStock: 0,
-    rating: 4,
-    numReviews: 12,
-  },
-  {
-    name: "Introduction to Algorithms",
-    image: "/images/Algorithms.jpg",
-    description:
-        "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
-    Author: "",
-    Subject: "Technology",
-    ISBN: "978-0262033848",
-    price: 9.99,
-    countInStock: 0,
-    rating: 4,
-    numReviews: 12,
-  },
-  {
-    name: "Human Anatomy & Physiology",
-    image: "/images/Human-Anatomy.jpg",
-    description:
-        "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
-    Author: "",
-    Subject: "Science",
-    ISBN: "978-0134580999",
-    price: 9.99,
-    countInStock: 0,
-    rating: 4,
-    numReviews: 12,
-  },
-  {
-    name: "Understanding Nutrition",
-    image: "/images/Nutrition.jpg",
-    description:
-        "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
-    Author: "",
-    Subject: "Science",
-    ISBN: "978-0357028929",
-    price: 9.99,
-    countInStock: 0,
-    rating: 4,
-    numReviews: 12,
-  },
-  {
-    name: "Intermediate Accounting",
-    image: "/images/Intermediate-Accounting.jpg",
-    description:
-        "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
-    Author: "",
-    Subject: "Business",
-    ISBN: "978-1119503669",
-    price: 9.99,
-    countInStock: 0,
-    rating: 4,
-    numReviews: 12,
-  },
-  {
-    name: "Operations Management",
-    image: "/images/Operations.jpg",
-    description:
-        "Meet Echo Dot - Our most popular smart speaker with a fabric design. It is our most compact smart speaker that fits perfectly into small space",
-    Author: "",
-    Subject: "Business",
-    ISBN: "978-1259667473",
-    price: 9.99,
-    countInStock: 0,
-    rating: 4,
-    numReviews: 12,
-  },
-];
-
-=======
-const products = [
-  {
-    name: "Campbell Biology",
-    image: "/images/biology.jpg",
-    description: "A comprehensive introduction to biology, covering topics from cellular biology to ecology, widely used in introductory biology courses.",
-    Author: "Neil A. Campbell and Jane B. Reece",
-    Subject: "Science",
-    ISBN: "978-0134093413",
-    price: 4.99,
-    countInStock: 1,
-    rating: 3,
-    numReviews: 5,
+    userEmail: "john@email.com",
   },
   {
     name: "Principles of Economics",
@@ -235,6 +24,7 @@ const products = [
     countInStock: 7,
     rating: 4.0,
     numReviews: 8,
+    userEmail: "john@email.com",
   },
   {
     name: "Chemistry: The Central Science",
@@ -248,6 +38,7 @@ const products = [
     countInStock: 5,
     rating: 3,
     numReviews: 12,
+    userEmail: "john@email.com",
   },
   {
     name: "Fundamentals of Physics",
@@ -261,6 +52,7 @@ const products = [
     countInStock: 11,
     rating: 5,
     numReviews: 12,
+    userEmail: "john@email.com",
   },
   {
     name: "Psychology",
@@ -274,6 +66,7 @@ const products = [
     countInStock: 7,
     rating: 3.5,
     numReviews: 10,
+    userEmail: "john@email.com",
   },
   {
     name: "Organic Chemistry",
@@ -287,6 +80,7 @@ const products = [
     countInStock: 0,
     rating: 4,
     numReviews: 12,
+    userEmail: "john@email.com",
   },
   {
     name: "Microbiology: An Introduction",
@@ -300,6 +94,7 @@ const products = [
     countInStock: 0,
     rating: 4,
     numReviews: 12,
+    userEmail: "john@email.com",
   },
   {
     name: "Principles of Marketing",
@@ -313,6 +108,7 @@ const products = [
     countInStock: 0,
     rating: 4,
     numReviews: 12,
+    userEmail: "john@email.com",
   },
   {
     name: "Essentials of Sociology",
@@ -326,6 +122,7 @@ const products = [
     countInStock: 0,
     rating: 4,
     numReviews: 12,
+    userEmail: "jane@email.com",
   },
   {
     name: "Accounting Principles",
@@ -339,6 +136,7 @@ const products = [
     countInStock: 0,
     rating: 4,
     numReviews: 12,
+    userEmail: "jane@email.com",
   },
   {
     name: "Fundamentals of Financial Management",
@@ -352,6 +150,7 @@ const products = [
     countInStock: 0,
     rating: 4,
     numReviews: 12,
+    userEmail: "jane@email.com",
   },
   {
     name: "Introduction to Algorithms",
@@ -365,6 +164,7 @@ const products = [
     countInStock: 0,
     rating: 4,
     numReviews: 12,
+    userEmail: "jane@email.com",
   },
   {
     name: "Human Anatomy & Physiology",
@@ -378,6 +178,7 @@ const products = [
     countInStock: 0,
     rating: 4,
     numReviews: 12,
+    userEmail: "jane@email.com",
   },
   {
     name: "Understanding Nutrition",
@@ -391,6 +192,7 @@ const products = [
     countInStock: 0,
     rating: 4,
     numReviews: 12,
+    userEmail: "jane@email.com",
   },
   {
     name: "Intermediate Accounting",
@@ -404,6 +206,7 @@ const products = [
     countInStock: 0,
     rating: 4,
     numReviews: 12,
+    userEmail: "jane@email.com",
   },
   {
     name: "Operations Management",
@@ -417,8 +220,8 @@ const products = [
     countInStock: 0,
     rating: 4,
     numReviews: 12,
+    userEmail: "jane@email.com",
   },
 ];
 
->>>>>>> features/profile-page
 export default products;

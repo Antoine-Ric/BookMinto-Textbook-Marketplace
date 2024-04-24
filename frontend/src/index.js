@@ -27,6 +27,14 @@ import ProfileInfoScreen from "./screens/ProfileInfoScreen";
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
 import MyOrders from "./screens/ProfileMyOrders";
+import MyListings from "./screens/ProfileMyListings";
+import ProductEditScreen from "./screens/ProductEditScreen";
+// admin 
+import AdminRoute from './components/AdminRoute';
+import OrderListScreen from './screens/admin/OrderListScreen';
+import ProductListScreen from './screens/admin/ProductListScreen';
+import UserListScreen from './screens/admin/UserListScreen';
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -38,18 +46,23 @@ const router = createBrowserRouter(
       <Route path="/register" element={<RegisterScreen />} />
 
       <Route path='' element={<PrivateRoute />}>
-      <Route path='/shipping' element={<ShippingScreen />} />
-      <Route path='/payment' element={<PaymentScreen />} />
-      <Route path='/placeorder' element={<PlaceOrderScreen />} />
-      <Route path='/order/:id' element={<OrderScreen />} />
-      <Route path="/profileupdate" element={<UpdateProfileScreen />} />
-      <Route path="/profileinfo" element={<ProfileInfoScreen />} />
-      <Route path="/myorders" element={<MyOrders/>} />
-      <Route path="/favorites" element={<FavoriteScreen />} />
+        <Route path='/shipping' element={<ShippingScreen />} />
+        <Route path='/payment' element={<PaymentScreen />} />
+        <Route path='/placeorder' element={<PlaceOrderScreen />} />
+        <Route path='/order/:id' element={<OrderScreen />} />
+        <Route path="/profileupdate" element={<UpdateProfileScreen />} />
+        <Route path="/profileinfo" element={<ProfileInfoScreen />} />
+        <Route path="/myorders" element={<MyOrders/>} />
+        <Route path="/favorites" element={<FavoriteScreen />} />
+        <Route path="/mylistings" element={<MyListings/>} />
+        <Route path='/product/:id/edit' element={<ProductEditScreen />} />
+      </Route>
 
-
-    </Route>
-
+      <Route path='' element={<AdminRoute />}>
+          <Route path='/admin/orderlist' element={<OrderListScreen />} />
+          <Route path='/admin/productlist' element={<ProductListScreen />} />
+          <Route path='/admin/userlist' element={<UserListScreen />} />
+      </Route>
     </Route>
     
   )
