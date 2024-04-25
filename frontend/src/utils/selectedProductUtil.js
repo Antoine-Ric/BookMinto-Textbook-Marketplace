@@ -1,8 +1,6 @@
 export const addDecimals = (num) => {
     return (Math.round(num * 100) / 100).toFixed(2);
   };
-  
-  //import { addDecimals } from './yourUtilityFile'; // Import the addDecimals utility function
 
   export const calculateSelectedProductPrices = (selectedProduct) => {
     // Check if selectedProduct is not null or undefined

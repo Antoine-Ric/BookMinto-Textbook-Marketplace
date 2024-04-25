@@ -12,8 +12,6 @@ import { removeHiddenFromCart } from '../slices/favoriteSlice'; // Import the ac
 
 
 const Header = () => {
-  //const { cartItems } = useSelector((state) => state.cart);
-
   const favoritesCount = useSelector(selectFavoritesCount); // Get favorites count from Redux store
 
   const { userInfo } = useSelector((state) => state.auth);
@@ -41,7 +39,7 @@ const Header = () => {
       <Navbar bg="dark" variant="dark" expand="md" collapseOnSelect>
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand onClick={handleLogoClick}> {/* Attach onClick handler to the logo */}
+            <Navbar.Brand onClick={handleLogoClick}>
               <img src={logo} alt="BookMinto" />
               BookMinto
             </Navbar.Brand>

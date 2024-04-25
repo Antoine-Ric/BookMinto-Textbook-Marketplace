@@ -6,9 +6,6 @@ import '../assets/styles/ProfileHeader.css';
 const ProfileHeader = ({ isSidebarOpen, toggleSidebar }) => {
   return (
     <div className={`sidebar ${isSidebarOpen ? 'open' : ''}`}>
-      {/* <button onClick={toggleSidebar} className="toggle-button">
-        {isSidebarOpen ? 'Close' : 'Open'} Sidebar
-      </button> */}
       <Nav className='flex-column'>
       <Nav.Item>
           <LinkContainer to='/profileinfo'>

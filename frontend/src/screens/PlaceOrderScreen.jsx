@@ -7,7 +7,7 @@ import Message from '../components/Message';
 import CheckoutSteps from '../components/CheckoutSteps';
 import Loader from '../components/Loader';
 import { useCreateOrderMutation } from '../slices/ordersApiSlice';
-import { selectHiddenItemsCount, clearCartItems, removeFromCart} from '../slices/favoriteSlice';
+import { selectHiddenItemsCount, removeFromCart} from '../slices/favoriteSlice';
 import { addDecimals } from '../utils/favoriteUtils';
 
 const PlaceOrderScreen = () => {
@@ -47,7 +47,7 @@ const PlaceOrderScreen = () => {
         dispatch(removeFromCart(cart.cartItems.filter((item) => item.isHidden)[0]._id));
         navigate(`/order/${res._id}`);
       } else {
-        throw new Error('Invalid response from server'); // Throw an error if the response is invalid
+        throw new Error('Invalid response from server');
       }
     } catch (err) {
       toast.error(err.message);

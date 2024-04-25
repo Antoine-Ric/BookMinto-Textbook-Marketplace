@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../assets/styles/SideNavBar.css";
-import Header from "./Header";
 
 const SideNavBar = () => {
 	const [isExpanded, setExpendState] = useState(false);

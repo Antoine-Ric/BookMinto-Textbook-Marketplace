@@ -20,43 +20,28 @@ import Notification from "../components/Notification";
 import { toast } from "react-toastify"; // Import toast from react-toastify
 import "react-toastify/dist/ReactToastify.css"; // Import the CSS for toastify
 
-
-//import { FaTrash } from "react-icons/fa";
+import { useGetUsersQuery } from "../slices/usersApiSlice";
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
-
-  //const [addedToFavorites, setAddedToFavorites] = useState(false);
-
-
   const [notification, setNotification] = useState(null);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
-  //const selectedProduct = useSelector((state) => state.checkout.selectedProduct);
-
-  //const isItemInFavorites = useSelector((state) => state.favorite.isItemInFavorites) || false;
-
   const [qty, setQty] = useState(1);
-
-  //const { cartItems } = useSelector((state) => state.cart);
-
 
   const {
     data: product,
-    isLoading,
+    isLoading: loadingProducts,
     error,
   } = useGetProductDetailsQuery(productId);
+
+  const {data: users, isLoading: loadingUsers} = useGetUsersQuery("")
 
   const checkoutHandler = () => {
     // Dispatch addToCart action without updating the state
     dispatch(hideToCart({ ...product, qty, isHidden: true  }));
-    //dispatch(removeFromCart(product._id));
 
-
-    
-    // Now proceed to shipping
     navigate("/shipping");
   };
 
@@ -102,7 +87,7 @@ const ProductScreen = () => {
       <Notification message={notification.message} type={notification.type} />
     )}
 
-      {isLoading ? (
+      {loadingProducts || loadingUsers ? (
         <Loader />
       ) : error ? (
         <Message variant="danger">
@@ -120,6 +105,9 @@ const ProductScreen = () => {
                 <h3>{product.name}</h3>
               </ListGroup.Item>
               <ListGroup.Item>
+                Posted By: {users.filter(user => user.email === product.userEmail)[0].name}{" "}
+              </ListGroup.Item>
+              <ListGroup.Item>
                 <Rating
                   value={product.rating}
                   text={`${product.numReviews} reviews`}
@@ -127,8 +115,13 @@ const ProductScreen = () => {
               </ListGroup.Item>
               <ListGroup.Item>Price: ${product.price}</ListGroup.Item>
               <ListGroup.Item>
+                Author: {product.Author}{" "}
+              </ListGroup.Item>
+              <ListGroup.Item>
+                ISBN: {product.ISBN}{" "}
+              </ListGroup.Item>
+              <ListGroup.Item>
                 Description: {product.description}{" "}
-                {/* Removed the $ sign before description */}
               </ListGroup.Item>
             </ListGroup>
           </Col>
@@ -173,7 +166,7 @@ const ProductScreen = () => {
                     </Row>
                   </ListGroup.Item>
                 )}
-                 {/* Add the Add to Favorites button here */}
+                 {/* Add to Favorites button here */}
                  <ListGroup.Item>
                   <Button
                     className="btn-block"

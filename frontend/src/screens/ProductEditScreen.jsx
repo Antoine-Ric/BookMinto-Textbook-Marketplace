@@ -115,7 +115,7 @@ const ProductEditScreen = () => {
             </Form.Group>
 
             <Form.Group controlId='ISBN'>
-              <Form.Label>Name</Form.Label>
+              <Form.Label>ISBN</Form.Label>
               <Form.Control
                 type='text'
                 placeholder='Enter ISBN'
