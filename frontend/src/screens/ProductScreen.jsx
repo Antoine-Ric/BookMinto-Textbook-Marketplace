@@ -99,9 +99,6 @@ const ProductScreen = () => {
                 <h3>{product.name}</h3>
               </ListGroup.Item>
               <ListGroup.Item>
-                Posted By: {users && users.length > 0 ? users.filter(user => user.email === product.userEmail)[0].name : ""}
-              </ListGroup.Item>
-              <ListGroup.Item>
                 <Rating
                   value={product.rating}
                   text={`${product.numReviews} reviews`}
