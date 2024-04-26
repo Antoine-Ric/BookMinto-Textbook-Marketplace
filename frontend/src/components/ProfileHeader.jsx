@@ -20,12 +20,6 @@ const ProfileHeader = ({ isSidebarOpen, toggleSidebar }) => {
       </Nav.Item>
 
       <Nav.Item>
-          <LinkContainer to='/notifications'>
-            <Nav.Link>Notifications</Nav.Link>
-          </LinkContainer>
-      </Nav.Item>
-
-      <Nav.Item>
           <LinkContainer to='/myorders'>
             <Nav.Link>My Orders</Nav.Link>
           </LinkContainer>

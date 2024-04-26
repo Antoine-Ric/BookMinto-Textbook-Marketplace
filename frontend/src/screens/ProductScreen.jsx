@@ -16,7 +16,6 @@ import Rating from "../components/Rating";
 import Message from "../components/Message";
 import { useGetProductDetailsQuery } from "../slices/productsApiSlice";
 import { addToCart, hideToCart} from "../slices/favoriteSlice";
-import Notification from "../components/Notification";
 import { toast } from "react-toastify"; // Import toast from react-toastify
 import "react-toastify/dist/ReactToastify.css"; // Import the CSS for toastify
 
@@ -24,7 +23,6 @@ import { useGetUsersQuery } from "../slices/usersApiSlice";
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
-  const [notification, setNotification] = useState(null);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -71,7 +69,7 @@ const ProductScreen = () => {
   };
 
   const offerHandler = () => {
-    setNotification({message: 'Offer submitted successfully!', type: 'sucess'});
+  
     handleCloseOfferModal();
   };
 
@@ -82,10 +80,6 @@ const ProductScreen = () => {
       <Link className="btn btn-light my-3" to="/">
         Go Back
       </Link>
-
-    {notification && (
-      <Notification message={notification.message} type={notification.type} />
-    )}
 
       {loadingProducts || loadingUsers ? (
         <Loader />
@@ -105,7 +99,7 @@ const ProductScreen = () => {
                 <h3>{product.name}</h3>
               </ListGroup.Item>
               <ListGroup.Item>
-                Posted By: {users.filter(user => user.email === product.userEmail)[0].name}{" "}
+                Posted By: {users && users.length > 0 ? users.filter(user => user.email === product.userEmail)[0].name : ""}
               </ListGroup.Item>
               <ListGroup.Item>
                 <Rating
