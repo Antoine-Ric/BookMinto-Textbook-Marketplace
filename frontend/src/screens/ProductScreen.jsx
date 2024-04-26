@@ -34,7 +34,7 @@ const ProductScreen = () => {
     error,
   } = useGetProductDetailsQuery(productId);
 
-  const {data: users, isLoading: loadingUsers} = useGetUsersQuery("")
+  const {isLoading: loadingUsers} = useGetUsersQuery("")
 
   const checkoutHandler = () => {
     // Dispatch addToCart action without updating the state
@@ -69,11 +69,8 @@ const ProductScreen = () => {
   };
 
   const offerHandler = () => {
-  
     handleCloseOfferModal();
   };
-
- 
 
   return (
     <>
