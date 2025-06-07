@@ -61,34 +61,6 @@ BookMinto is built to provide a seamless experience for users to browse, search,
 
 ---
 
-## Folder Structure
-
-bookMinto/
-│
-├── backend/
-│   ├── config/           # Database and environment config
-│   ├── controllers/      # Route controllers for business logic
-│   ├── data/             # Seed data for products and users
-│   ├── middleware/       # Custom Express middleware
-│   ├── models/           # Mongoose models
-│   ├── routes/           # API route definitions
-│   ├── utils/            # Utility functions
-│   ├── seeder.js         # Database seeding script
-│   └── server.js         # Entry point for backend server
-│
-├── frontend/
-│   ├── public/           # Static assets
-│   ├── src/              # React source code
-│   ├── package.json      # Frontend dependencies and scripts
-│   └── README.md         # Frontend documentation
-│
-├── .env                  # Environment variables
-├── example.env           # Example environment variables
-├── package.json          # Project-level dependencies and scripts
-└── README.md             # Project documentation
-
----
-
 ## Getting Started
 
 ### Prerequisites
@@ -151,7 +123,7 @@ bookMinto/
 
 ## Contributing
 
-We are looking for passionate engineers to join our team! If you are excited about modern JavaScript, scalable architectures, and building impactful products, please reach out or submit a pull request.
+https://docs.google.com/document/d/1CmrlF-qqN5HVIssWoYKXthadAmJBxZdvca4_kuP-hCs/edit?tab=t.0
 
 ---
 
@@ -160,7 +132,4 @@ We are looking for passionate engineers to join our team! If you are excited abo
 This project is licensed under the MIT License.
 
 ---
-
-**Showcase your skills and join us in building the future of online book commerce!**
-```
 
