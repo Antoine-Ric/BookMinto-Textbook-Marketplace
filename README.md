@@ -9,7 +9,6 @@ BookMinto is a full-stack e-commerce web application designed for buying and sel
 - [Project Overview](#project-overview)
 - [Tech Stack](#tech-stack)
 - [Features](#features)
-- [Folder Structure](#folder-structure)
 - [Getting Started](#getting-started)
 - [Scripts](#scripts)
 - [Contributing](#contributing)
